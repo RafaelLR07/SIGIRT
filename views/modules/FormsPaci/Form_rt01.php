@@ -7,8 +7,9 @@
   
   $ced_var = new f01_controller();
   $token = $ced_var->getToken($id_pac);
+  //echo $token.' '.$id_pac.'<br>';
   $val = $ced_var->registro_f01_Controller($id_pac,$token);
-  
+  echo $val;
   /*
   if($valor!="error" && $valor!=""){
      header("Location: content.php?p=formatos&form=2&token=$valor");

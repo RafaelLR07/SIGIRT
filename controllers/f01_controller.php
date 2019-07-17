@@ -55,19 +55,24 @@ class f01_controller
 					'parenteso' => $_POST['parentesco'],
 					'fecha_accidente' => $_POST['fech_acc'],
 					'descripcion_rt' => $_POST['desc_rt'],
-					'circuns' => $_POST['circuns'],
+					'circuns' => $_POST['circuns']
 				);
 			
 				
 							
 				 
-			$respuesta = datos_f01::regist_f01('dependencia_info', $info_dep, $token);  
+			$respuesta = datos_f01::registDep_info('dependencia_info', $info_dep, $token);  
 			
 			//pacientes dependencias
-			$respuesta = datos_f01::regist_pacDep('paciente_dep', $info_lab,$token_tra,$id_pac_grl);  
-			//$respuesta = datos_f01::regist_f01('frt_02', $info_dep);  
-			
+			$respuesta = datos_f01::regist_pacDep('paciente_dep', $info_lab,$token,$id_pac_grl);  
 
+			//Registro de f01	
+			
+			$depend = datos_f01::getId_dependencia($token);
+			$pac_depend = datos_f01::getId_pac_dependencia($token);
+			
+			$respuesta = datos_f01::regist_f01('frt_01', $datos_control,$depend,$pac_depend,$token);  
+			
 			return $respuesta;
 				
 			}

@@ -1,0 +1,377 @@
+
+*{
+	box-sizing: border-box;
+}
+
+
+
+h2{
+	font-size: 22px;
+}
+
+.contenidos, .introduccion {
+	width: 90%;
+	max-width: 1000px;
+	margin: auto;
+}
+
+.formulario {
+  /* --------------------------------------- */
+  /* ----- Radio Button */
+  /* --------------------------------------- */
+  /* --------------------------------------- */
+  /* ----- Checkbox */
+  /* --------------------------------------- */ 
+
+
+}
+  
+  .formulario > div {
+    padding: 20px 0;
+	
+}
+
+.formulario input[type="radio"],
+.formulario input[type="checkbox"]{
+	display: none;
+}
+
+.formulario  .labelx
+{
+	color:   #333   ;
+	padding:5px 15px 5px 51px;
+	display:inline-block;
+	position: relative;
+	font-size: 1em;
+	border-radius: 3px;
+	cursor: pointer;
+
+	-webkit-transition: all 0.3s ease;
+	 -o-transition: all 0.3s ease;
+	 transition: all 0.3s ease; 
+
+}
+
+.formulario .labelx:hover{
+	background:   #9d9d9d   ;
+	color:;
+}
+
+.formulario .labelx:before{
+	content: "";
+	width:17px;
+	height: 17px;
+	display: inline-block;
+	background: none;
+	border: 3px solid    #333   ; 
+	border-radius: 50%;
+	position: absolute;
+	left: 17px;
+	top: 4px;
+}
+
+
+
+.formulario input[type="radio"]:checked + .labelx{
+	padding: 5px 15px;
+	background:   #333   ;
+	border-radius: 2px;
+	color: #fff;
+
+
+}
+
+.formulario input[type="radio"]:checked + .labelx:before{
+	display: none;
+	
+
+}
+
+.formulario input[type="checkbox"]:checked + .labelx{
+	padding: 5px 15px;
+	background:   #333   ;
+	border-radius: 2px;
+	color: #fff;
+
+
+}
+
+.formulario input[type="checkbox"]:checked + .labelx:before{
+	display: none;
+	
+
+}
+
+
+.formulario{
+   width: 60%;
+   
+   margin-right: auto;
+   margin-left: auto;
+}
+
+.input{
+	border-right: auto;
+	border-left: auto;
+	
+}
+
+.input input{
+	
+	width: 100%;
+	
+	
+}
+
+
+h1{
+	background: pink;
+	text-decoration: underline;
+}
+/*color: #155724;
+background-color: #d4edda;
+border-color: #c3e6cb;*/
+/* Titulos */
+.title {
+	padding: 2px;
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: 400px;
+}
+
+
+.info_personal{
+	
+	width: 120%;
+	margin-left: 30px;
+	
+}
+
+.dom{
+
+	width: 70%;
+	margin-left: 25%;
+	
+}
+
+
+.inputD{
+	border-left: auto;
+	border-right: auto;
+}
+
+.inputD input{
+	width: 100%;
+
+
+}
+
+.panel-success{
+	 width: 70%;	
+	 margin-right: auto;
+	 margin-left: auto;
+}
+
+
+textarea{
+	resize: none;
+}
+
+
+iframe{
+	width: 85%;
+    height: 720px;
+    display: block;
+}
+
+#activos,#pendientes{
+	width: 50%;
+	height: 40px;
+	
+}
+
+#tabla_inactivos{
+	display: none;
+	background: red;
+}
+
+#docu{
+	width: 25px;
+	background: red;
+	margin-left: 40%;
+
+	height: 25px;
+
+}
+
+
+.docums{
+	margin-left: 3%;	
+}
+
+#icono{
+
+	background: red;
+	margin-left: 19%;	
+}
+
+.forms{
+	display: block;
+	margin-left: 19%;
+}
+
+
+#boton_actio{
+	display: inline;
+	height: 35px;
+	width: 40px;
+	font-size: 10px;
+	padding: 1px;
+	background: #c8716f;
+	border: 100px 100px solid #b94a48;
+}
+#icono_ver{
+	margin-top: 0px;
+	height: 20px;
+	width: 30px;
+	font-size: 20px;
+	color: black;
+}
+
+.letter{
+	display: inline;
+	margin: 5px;
+	padding: 4px;
+	margin-left: 19%;
+	margin-right:19%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

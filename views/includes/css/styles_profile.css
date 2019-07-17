@@ -1,0 +1,90 @@
+.perfil{
+	margin:8px;
+	margin-bottom:18px;
+	
+}
+
+.info{
+	margin:8px solid black;
+	margin-bottom:18px;
+
+
+}
+
+.image_profile{
+	display: inline;
+	background: pink;
+	margin: 5px;
+	margin-right:100px;
+}
+
+.datos_user{
+	display: inline;
+	position: absolute;
+	width: 60%;
+	margin: 10px solid black;
+
+}
+
+.personal_info{
+	padding: 7px;
+	margin: 8px;
+
+}
+
+.panel{
+	height: auto;
+}
+
+.person{
+	margin:20px;
+	height: 400px;
+
+}
+
+
+
+.avance_gen{
+	
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.avances{
+	margin-right: auto;
+	margin-left: auto;
+	
+}
+
+.title_avan{
+	margin-top:3px;
+	margin-right:10px;
+	font-family: 'Elvetica';
+	
+}
+
+.grafica-avan{
+	margin: 10px;
+}
+
+.title_avan, .grafica-avan{
+	display: inline-block;
+}
+
+.title_a{
+	font-size: 24px;
+	font-family: 'Helvetica Neue';
+	text-decoration: underline;
+}
+
+.link{
+	color: black;
+}
+
+.link:hover{
+	color: gray;
+}
+
+.subtitle{
+	
+}

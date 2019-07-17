@@ -1,0 +1,1 @@
+<h1>Cedula inicial de paciente</h1>

@@ -16,9 +16,9 @@
 		echo "<center><iframe src='views/modules/formatos/cedula_ini.php?token=$tokenPac' class='formato'></iframe></center>";
 	}
 	//RT 03 A
-	if($var_form==31){
-		echo "<center><h2>Formato de RT-03 A</h2></center>";
-		echo '<center><iframe src="views/modules/formatos/frt03_a.php" class="formato"></iframe></center>'	;
+	if($var_form==4){
+		echo "<center><h2>Formato de RT-01 </h2></center>";
+		echo "<center><iframe src='views/modules/formatos/FORMATOS RT-01.php?token=$tokenPac' class='formato'></iframe></center>";
 	}
 	//RT 03 B
 	if($var_form==32){

@@ -9,19 +9,17 @@
   $token = $ced_var->getToken($id_pac);
   //echo $token.' '.$id_pac.'<br>';
   $val = $ced_var->registro_f01_Controller($id_pac,$token);
-  echo $val;
-  /*
-  if($valor!="error" && $valor!=""){
-     header("Location: content.php?p=formatos&form=2&token=$valor");
-  }else if ($valor=="error") {
+  
+  if($val!="error" && $val!=""){
+     header("Location: content.php?p=formatos&form=4&token=$val");
+  }else if ($val=="error") {
      echo "error";
-  }*/
+  }
 
   
   
  ?>
 
-  
   
 	<div class="container">
   <div class="title" align="center">
@@ -116,7 +114,13 @@
             <div class="form-group">
               <label for="">Turno de trabajo</label>
               <div class="inputD">
-                  <input type="text" class="form-control" id="turno_tra" name="turno_tra" placeholder="Turno de trabajo">
+                  <select name="turno_tra" class="form-control" id="turno_tra">
+                      <option value="matutino">Matutino</option>  
+                      <option value="vespertino">Vespertino</option>    
+                      <option value="nocturno">Nocturno</option>    
+                      <option value="mixto">Mixto</option>      
+                      <option value="jornada acumulada">Jornada Acumulada</option>      
+                      </select>
               </div>
             </div>
 
@@ -167,9 +171,9 @@
                   <div class="inputD">
                     <select name="circuns" class="form-control" id="circuns">
                       <option value="A">Dependencia</option>  
-                      <option value="B">Trayecto a trabajo</option>    
-                      <option value="B">Trayecto a domicilio</option>    
-                      <option value="A">Tiempo extra</option>      
+                      <option value="B-T">Trayecto a trabajo</option>    
+                      <option value="B-D">Trayecto a domicilio</option>    
+                      <option value="A-T">Tiempo extra</option>      
                       <option value="C">Comision</option>      
                       </select>
                   </div>
@@ -431,3 +435,4 @@
 
      </div>
 	 	<br><br><br>
+  

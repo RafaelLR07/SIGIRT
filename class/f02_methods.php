@@ -6,7 +6,18 @@
 procesos en el formato FT02
 */
 class f02_methods
+
 {
+
+	public function obtener_fecha2($date){
+            list($anio, $mess, $dia) = explode("-", $date);
+            $dias = array("Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo");
+            $mes = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+            $fecha = $dia ." de ".$mes[$mess-1] ." del ". $anio;
+            return $fecha;
+
+        }    
+        
 	public function comp_SIorNO($comparador)
 	{
 		$valor_comp = array('afirm' => '',

@@ -4,9 +4,16 @@
 * 
 */
 class f01_controller
-{
-	public function getToken($id_pac_grl)
-	{
+{	
+	public function getF01_info($token){
+		
+		$respuesta=  datos_f01::getF01_inf($token);
+		$cadena="";
+		foreach ($respuesta as $valor);
+		return $valor;
+	}
+
+	public function getToken($id_pac_grl){
 	 $respuesta = datos_f01::getToken_tramite($id_pac_grl);  
 	 return $respuesta;
 	

@@ -67,6 +67,7 @@
 			}else{
 				return "error";
 			}
+			$stmt->close();
 
 	}
 

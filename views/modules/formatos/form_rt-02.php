@@ -292,7 +292,7 @@ $pdf = new PDF();
 	$pdf->SetXY(10,215);
 	$pdf->Cell(80,12,utf8_decode('DÍAS DE LICENCIA MÉDICA OTORGADOS'),1,0,'L',false);
 	$pdf->SetXY(100,215);
-	$pdf->Cell(10,12,utf8_decode($valor_f02['dias_lic']),1,0,'L',false);
+	$pdf->Cell(10,12,utf8_decode($valor_f02['dias_lic']),1,0,'C',false);
 	$pdf->SetXY(120,215);
 	$pdf->Cell(10,12,utf8_decode('DE'),1,0,'L',false);
 	$pdf->SetFillColor(186, 190, 191);

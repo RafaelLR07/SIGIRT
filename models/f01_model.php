@@ -153,6 +153,24 @@
 			return $idd;
 		}
 
+		public function getF01_inf($token){
+			$kuery = "CALL f01_infor_db(:token)";
+
+			$stmt = Connection::open()->prepare($kuery);
+			$stmt->bindParam(":token",$token, PDO::PARAM_STR);
+
+			$stmt->execute();
+			return $stmt->fetchAll();
+
+			$stmt->close();
+
+
+		}
+
+
+
+
+
 
 
 	}

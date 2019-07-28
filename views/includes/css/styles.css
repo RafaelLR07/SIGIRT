@@ -200,22 +200,25 @@ iframe{
 
 #docu{
 	width: 25px;
-	background: red;
-	margin-left: 40%;
-
+	background: blue;
+	margin-left: 30%;
+	margin-top: 10px;
 	height: 25px;
 
 }
 
 
 .docums{
-	margin-left: 3%;	
+	margin-left: 1%;
+	margin-top: 1px;	
+	font-size: 17px;
+	font-weight: normal;
 }
 
 #icono{
 
-	background: red;
-	margin-left: 19%;	
+	background: pink;
+	margin-left: 2%;	
 }
 
 .forms{
@@ -230,7 +233,7 @@ iframe{
 	width: 40px;
 	font-size: 10px;
 	padding: 1px;
-	background: #c8716f;
+	background: #a01f46;
 	border: 100px 100px solid #b94a48;
 }
 #icono_ver{
@@ -238,7 +241,7 @@ iframe{
 	height: 20px;
 	width: 30px;
 	font-size: 20px;
-	color: black;
+	color: #f2dede;
 }
 
 .letter{
@@ -250,10 +253,15 @@ iframe{
 }
 
 
+#docus{
+	display: inline-block;
+	background: red;
+	font-size: 15px;
+}
 
-
-
-
+.avances{
+	margin: 1px 1px solid black;
+}
 
 
 

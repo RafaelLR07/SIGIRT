@@ -30,6 +30,12 @@
 			   $module_url = "views/modules/FormsPaci/Form_rt01.php";
 
 			}
+
+			else if($url_model=="rt-03"||
+			   $url_model=="fr02"){
+			   $module_url = "views/modules/FormsPaci/Form_rt03.php";
+
+			}
 			else if($url_model=="activos"||$url_model=="pendientes"){
 				$module_url = "views/modules/Pacientes_".$url_model."/".$url_model.".php";				
 			}

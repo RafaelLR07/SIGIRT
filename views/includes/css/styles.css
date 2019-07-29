@@ -263,6 +263,14 @@ iframe{
 	margin: 1px 1px solid black;
 }
 
+.tabla_doc td{
+	height: 80px;
+}
+
+.tabla_doc .buttons{
+	/*background: red;*/
+	width: 300px;
+}
 
 
 

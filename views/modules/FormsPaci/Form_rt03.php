@@ -13,7 +13,34 @@
              <div class="panel-body">
                  
   <form class="" method="POST">
-            
+  	
+                    <table class="tabla_doc">
+                    	<tr>
+                    		<td>OFICIO DE SOLICITUD DE CERTIFICACION DE LICENCIAS MEDICAS</td>
+
+                    		<td class="buttons">                         
+		                     	<input type="checkbox" name="ad" class="form-control">   
+		                    </td>
+                    	</tr>
+
+                    	<tr>
+                    		<td>OFICIO JUSTIFICANDO FALTA DE CREDENCIAL DE ELECTOR</td>
+
+                    		<td class="buttons">                         
+		                     	<input type="checkbox" name="ad" class="form-control">   
+		                    </td>
+                    	</tr>
+
+                    	<tr>
+                    		<td>OFICIO DE SOLICITUD DE CERTIFICACION DE LICENCIAS MEDICAS</td>
+
+                    		<td class="buttons">                         
+		                     	<input type="checkbox" name="ad" class="form-control">   
+		                    </td>
+                    	</tr>
+                    </table>
+                  
+            		<!--
                       <div class="avances">
                       	<span id="icono" class="glyphicon glyphicon-plus"></span>
 					  	<label class="docums" for="drug">OFICIO DE NOTIFICACION ANTE EL ISSSTE</label>
@@ -33,8 +60,9 @@
 
 						<table border="0">
 							<tr>
-								<td width="500">
-					  	<label class="docums" for="drug">SOLICITUD DE CALIFICACION DEL PROBLABLE RIESGO DE TRABAJO(RT01) 3 TANTOS (IMPRIMIR SOLO FRENTE)</label></td>
+								<td width="500" border="1">
+					  	<label class="docums" for="drug">OFICIO DE NOTIFICACION ANTE EL ISSSTE
+</label></td>
 								<td width="200" align="center"><input type="checkbox" value="1" name="name" id="docu" class=""></td>
 							</tr>
 						</table>
@@ -47,7 +75,7 @@
            </div> 
          </div>                    
       </div> 
-           
+           -->
       	</form>
 
      </div>

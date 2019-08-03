@@ -10,6 +10,20 @@
 
 	class datos_f01 extends Connection
 	{
+
+		public function getF02_circ($token)
+		{
+			$kuery = "SELECT id_nat_riesgo FROM frt_02 WHERE token=:token";
+
+			$stmt = Connection::open()->prepare($kuery);
+			$stmt->bindParam(":token",$token, PDO::PARAM_STR);
+
+			$stmt->execute();
+			$id_paciente = $stmt->fetchAll();
+			$idd = implode($id_paciente[0]);
+			return $idd;
+		}
+
 		public function registDep_info($table,$dates,$token){
 
 			$kuery="INSERT INTO $table(

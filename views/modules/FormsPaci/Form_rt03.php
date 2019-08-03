@@ -1,4 +1,9 @@
 
+<?php 
+	$docs_rt03 = new f03_controller();
+  	$documents = $docs_rt03->getDocuments();
+
+ ?>
  
 <div class="container">
   <div class="title" align="center">
@@ -8,14 +13,18 @@
           
   <div class="panel panel-success">
              <div class="panel-heading">
-                <strong><h3>Nombre de familiar</h3></strong><hr>     
+             	<strong><h3>Documentación requerida</h3></strong><hr>     
              </div>
              <div class="panel-body">
-                 
+             
   <form class="" method="POST">
-  	
-                    <table class="tabla_doc">
+  					<?php 
+  						echo var_dump($documents);
+  					 ?>
+                    <table class="tabla_doc">                    	
+							
                     	<tr>
+
                     		<td>OFICIO DE SOLICITUD DE CERTIFICACION DE LICENCIAS MEDICAS</td>
 
                     		<td class="buttons">                         

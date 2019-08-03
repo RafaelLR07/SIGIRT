@@ -272,7 +272,24 @@ iframe{
 	width: 300px;
 }
 
+.imge_center{
+	padding: 10px;
+	margin-top: 25px;
+	margin-bottom: 20px;
+	display: block;
+	width: 250px;
+	height: 210px;
+ 	margin-left: auto;
+ 	margin-right: auto;
+ 	box-shadow: 2px 2px 10px gray;
+}
 
+#ingresar_log{
+	background: #c56161;
+	color:white;
+	border-radius: 20px;
+	height: 40px;
+}
 
 
 

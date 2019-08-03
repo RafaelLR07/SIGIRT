@@ -16,7 +16,8 @@
      echo "error";
   }
 
-  
+  $id = $ced_var->circunsTest('1','1562087952JHVOaRWD');
+  echo $id;
   
  ?>
 
@@ -149,23 +150,28 @@
              </div>
              <div class="panel-body">
 
-               <div class="form-group">
-                 <div class="dom">
+               <div class="form-group" style="background: pink">
+                 <div style="background: red; margin-left: 98%; margin-top:0; margin-right: 0;"><button>?</button></div>
+                 <div class="dom" style="background: yellow">
                   <label for="">Fecha y hora del accidente o probable inicio de la enfermedad</label>
-                   <div class="inputD">
+                  <div class="inputD">
                     <input type="datetime-local" class="form-control" id="fech_acc" name="fech_acc">
                    </div>
-                </div>
+                  </div>
+
+              </div>
                 <div class="form-group">
+                  <div style="background: red; margin-left: 98%; margin-top:0; margin-right: 0;"><button>?</button></div>
                       <div class="dom">
                   <label for="">Descripcion detallada del accidente de trabajo</label>
                    <div class="inputD">
                     <textarea name="desc_rt" onkeyup="mayus(this)" type="text" class="form-control" id="desc_rt" placeholder="Descripcion detallada del accidente" onkeyup="mayus(this)"></textarea>
-                   </div>
+                    </div>
                   </div>
                 </div>
 
                  <div class="form-group">
+                  <div style="background: red; margin-left: 98%; margin-top:0; margin-right: 0;"><button>?</button></div>
                   <div class="dom">
                   <label for="">Circunstancias en las kue ocurrio el accidente</label>
                   <div class="inputD">
@@ -195,6 +201,7 @@
              <div class="panel-body">
                
                <div class="form-group">
+                <div style="background: red; margin-left: 98%; margin-top:0; margin-right: 0;"><button>?</button></div>
                  <div class="dom">
                   <label for="">Dependencia</label>
                    <div class="inputD">
@@ -205,6 +212,7 @@
 
 
                <div class="form-group">
+                <div style="background: red; margin-left: 98%; margin-top:0; margin-right: 0;"><button>?</button></div>
                  <div class="dom">
                   <label for="">Numero de ramo</label>
                    <div class="inputD">
@@ -214,11 +222,12 @@
                </div>
               
                <div class="title">
+                <div style="background: red; margin-left: 98%; margin-top:0; margin-right: 0;"><button>?</button></div>
                 <div class="dom">
                   <h4><strong>Nombre del representante legal de la dependencia</strong></h4><hr>
                 </div>
                </div>
-
+                <br>
                 <div class="form-group">
                  <div class="dom">
                   <label for="">Apellido paterno</label>

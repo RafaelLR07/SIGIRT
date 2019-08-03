@@ -35,14 +35,14 @@
 			      		<!--<a href="" class="forms"><h4>FORMATO RT-03</h4></a>-->
 			      		
 			      		<br><br>
-			      		<h4 class="letter" disabled >FORMATO RT-03</h4>
+			      		<h4 class="letter">FORMATO RT-03</h4>
 						
 						<button id="boton_actio" type="button" class="btn btn-primary btn-lg" onclick="window.location.href='content.php?p=rt-03&pac=40'">
             				<span id="icono_ver" class="glyphicon glyphicon-edit"></span>
           				</button>
 
 
-			      		<button id="boton_actio" type="button" class="btn btn-primary btn-lg" onclick="window.location.href='#'" disabled="disabled">
+			      		<button id="boton_actio" type="button" class="btn btn-primary btn-lg" onclick="window.location.href='#'"  <?php echo "disabled";  ?>>
             				<span id="icono_ver" class="glyphicon glyphicon-eye-open"></span>
           				</button>			      	
 			      	</div>

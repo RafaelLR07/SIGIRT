@@ -6,11 +6,12 @@
   	  <link rel="stylesheet" type="text/css" href="views/includes/css/styles.css">
 	  <link rel="icon" type="image/png" href="views/includes/images/icon.png">
 
-      <title>PRAXAIR</title>    
+      <title>SIGIRT</title>    
    	</head>
    	
    	
 	<body>
+	<img class="imge_center" src="views/includes/images/logo issste 2019_3.jpg" alt="">
     <div class="col-md-12">
 		<div class="container">
 			<div class="row main">
@@ -24,7 +25,7 @@
 				<label for="name" class="cols-sm-3 control-label">Usuario</label>
 					<div class="cols-sm-10">
 						<div class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-user" style="font-size:18px;" aria-hidden="true"></i></span>
+							<span class="input-group-addon"><i class="glyphicon glyphicon-user" style="font-size:30px;" aria-hidden="true"></i></span>
 						<input type="text" class="form-control" name="usuario" id="user"  placeholder="Usuario" required/>
 						</div>
 					</div>
@@ -39,7 +40,7 @@
 					</div>
 			</div>
 
-        <button type="submit" class="btn btn-info btn-block ">Ingresar</button>
+        <button type="submit" class="btn-block" id="ingresar_log">Ingresar</button>
       </form>
       <a href="content.php?p=content"> entrar</a>
     </div>	

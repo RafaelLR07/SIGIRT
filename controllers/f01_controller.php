@@ -18,6 +18,54 @@ class f01_controller
 	 return $respuesta;
 	
 	}
+
+	public function circunsTest($circunstancia, $token){
+		
+		//query para el circunstancias de F02
+		$respuesta = datos_f01::getF02_circ($token);  
+		return $respuesta;
+
+		//comparacion de cirdcunstancias del f01
+		/*switch ($circunstancia) {
+			case 'A':
+				break;
+			case 'B-T':
+				break;
+			case 'B-D':
+				break;
+			case 'A-T':
+				break;
+			case 'C':
+				break;
+			case 'value':
+			
+			default:
+				
+				break;
+		}*/
+	}
+	
+	public function getCir_f02($value)
+	{
+		
+	}
+	public function insertacA($token)
+	{
+		
+	}
+
+
+	public function insertacB($token)
+	{
+		
+	}
+
+
+	public function insertacC($token)
+	{
+	
+	}
+
 	public function registro_f01_Controller($id_pac_grl,$token){
 	
 			if(isset($_POST['regiss'])){
@@ -62,7 +110,7 @@ class f01_controller
 					'parenteso' => $_POST['parentesco'],
 					'fecha_accidente' => $_POST['fech_acc'],
 					'descripcion_rt' => $_POST['desc_rt'],
-					'circuns' => $_POST['circuns']
+					'circuns' => $_POST['circuns']//*********************************
 				);
 			
 				

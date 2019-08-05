@@ -15,7 +15,8 @@
 	display: inline;
 	background: pink;
 	margin: 5px;
-	margin-right:100px;
+	margin-right:auto;
+	margin-left: auto;
 }
 
 .datos_user{

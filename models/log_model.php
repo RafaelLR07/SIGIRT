@@ -8,13 +8,38 @@ require_once "DBconexion.php";
 class log_model extends Connection
 {
 
-	public function getProfile_infoM($tabla,$id)
-	{
-		$kuery = "SELECT cedula, apellido_pat, apellido_mat, nombre, clave 
-					FROM $tabla WHERE id_medicos = :identificador";
+	public function getProfile_infoM($id,$tipo_user)
+	{	$kuery="";
+		switch ($tipo_user) {
+			case 'Paciente':
+				//consulta cuando son pacientes
+				$kuery = "CALL profilePaci(:identificador)";
+				break;
 
+			case 'Usuario':
+				//consulta cuando son usuarios de oficina 
+				$kuery = "SELECT nombre, email FROM usuarios WHERE id_usuario = :identificador";
+				break;
+
+			case 'Admin':
+				//consulta cuando son usuarios admin
+				$kuery = "SELECT nombre, email FROM usuarios WHERE id_usuario = :identificador";
+				break;
+
+			case 'Medico':
+
+				//consulta cuando son medicos
+				$kuery = "CALL profileMedic(:identificador)";
+				break;
+			
+			default:
+				return "error";
+				break;
+		}
+		
+		
 		$stmt = Connection::open()->prepare($kuery);
-		$stmt->bindParam(":identificador",$dat_log["usuario"], PDO::PARAM_STR);
+		$stmt->bindParam(":identificador",$id, PDO::PARAM_STR);
 	
 	
 		if($stmt->execute()){
@@ -42,7 +67,7 @@ class log_model extends Connection
 		$stmt->bindParam(":contra",$dat_log["contra"], PDO::PARAM_STR);
 	
 		if($stmt->execute()){
-			 $datos = $stmt->fetch();	
+			$datos = $stmt->fetch();	
 			if($datos){
 				return $datos;
 			}else{

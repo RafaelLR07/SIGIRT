@@ -13,6 +13,7 @@
 	include_once "models/f01_model.php";
 	include_once "models/f03_model.php";
 	include_once "models/cedula_model.php";
+	include_once "models/log_model.php";
 	//include_once "models/pac_pendientes_model.php";
 
 	$main_controller = new main_controller();

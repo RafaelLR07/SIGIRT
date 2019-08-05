@@ -12,7 +12,11 @@
 				
 				$module_url = "views/modules/inicio.php";				
 
-			}else if($url_model=="inicio"||
+			}else if($url_model=="output"){
+			   $module_url = "views/modules/output.php";
+
+			}
+			else if($url_model=="inicio"||
 			   $url_model=="fr02"){
 			   $module_url = "views/modules/".$url_model.".php";
 
@@ -25,24 +29,25 @@
 			   $module_url = "views/modules/FormsPaci/Form_cedula.php";
 
 			}
-			else if($url_model=="rt-01"||
-			   $url_model=="fr02"){
+			else if($url_model=="rt-01"||$url_model=="fr02"){
 			   $module_url = "views/modules/FormsPaci/Form_rt01.php";
 
 			}
 
-			else if($url_model=="rt-03"||
-			   $url_model=="fr02"){
+			else if($url_model=="rt-03"||$url_model=="fr02"){
 			   $module_url = "views/modules/FormsPaci/Form_rt03.php";
 
 			}
-			else if($url_model=="activos"||$url_model=="pendientes"){
+			else if($url_model=="activos"||$url_model=="pendientes"||$url_model=="recha"){
 				$module_url = "views/modules/Pacientes_".$url_model."/".$url_model.".php";				
 			}
+
+			
 
 			else if($url_model=="profile"){
 				$module_url = "views/modules/Perfil/".$url_model."_user.php";				
 			}
+			
 
 			else if($url_model=="usuarios"){
 				$module_url = "views/modules/usuarios/".$url_model.".php";				

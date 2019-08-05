@@ -27,7 +27,43 @@
 	</header>
 	
 	<?php 
-		include "modules/nav_bar_root.php";
+    session_start();
+    $tipoUsuario = "";
+    $name = "";
+
+      if(!$_SESSION["validar"]){
+
+         header("Location: index.php");
+
+      }else{
+        $name = $_SESSION['nom_usuario'];
+        $tipoUsuario = $_SESSION['tipoUsuario'];
+      }
+
+    
+    switch ($tipoUsuario) {
+          case 'Admin':
+            include "modules/Pagle/nav_bar_root.php";
+          
+            break;
+
+          case 'Usuario':
+              include "modules/Pagle/nav_bar_user.php";
+            break;
+
+          case 'Paciente':
+            include "modules/Pagle/nav_bar_pac.php";
+            break;
+
+          case 'Medico':
+            include "modules/Pagle/nav_bar_doc.php";
+            break;
+          
+          default:
+            # code...
+            break;
+          }
+	
 	 ?>
 	
 	<div class="container">

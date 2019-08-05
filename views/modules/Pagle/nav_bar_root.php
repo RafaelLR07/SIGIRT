@@ -15,21 +15,20 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class=""><a href="content.php?p=inicio" class="encabezado">Inicio</a></li>
-        <!--<li class="dropdown">
-          <a class="encabezado"  data-toggle="dropdown" href="#">Recomendaciones<span class="caret"></span></a>
+        <li class="dropdown">
+          <a class="encabezado"  data-toggle="dropdown" href="#">Pacientes<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#" class="encabezado">Page 1</a></li>
-            <li><a href="#" class="encabezado">Page 2</a></li>
-            <li><a href="#" class="encabezado">Page 3</a></li>
+            <li><a href="content.php?p=activos" class="encabezado">Activos</a></li>
+            <li><a href="content.php?p=pendientes" class="encabezado">Pendientes</a></li>
+            
 
           </ul>
-        </li>-->
-        <li><a href="content.php?p=pendientes" class="encabezado">Pendientes</a></li>
-        <li><a href="content.php?p=activos" class="encabezado">Activos</a></li>
+        </li>
+      
         <li><a href="content.php?p=usuarios" class="encabezado">Usuarios</a></li>
         <li><a href="content.php?p=profile" class="encabezado">Perfil</a></li>
 
-        <li><a href="content.php?p=navv" class="encabezado">Registrar Fr-02</a></li>
+        <!--<li><a href="content.php?p=navv" class="encabezado">Registrar Fr-02</a></li>-->
 
         <li><a href="content.php?p=output" class="encabezado">Cerrar sesión</a></li>
 

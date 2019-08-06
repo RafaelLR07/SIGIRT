@@ -120,10 +120,12 @@
 
 
 	//pack(format)c pendientes vista
-	public function pacAct_model($table){
-
-		$stmt = Connection::open()->prepare("SELECT * FROM ".$table);
+	public function pacAct_model($table,$filtro){
 		
+		$query = "CALL getPacientes_act(:filtro)";
+		$stmt = Connection::open()->prepare($query);
+
+		$stmt->bindParam(":filtro", $filtro ,PDO::PARAM_STR);
 		$stmt->execute();
 		return $stmt->fetchAll();
 

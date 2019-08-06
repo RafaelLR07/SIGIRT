@@ -1,3 +1,6 @@
+
+$(buscar_datos());
+
 $(document).on('keyup','#but', function(){
 		valor = $(this).val();
 
@@ -12,13 +15,13 @@ $(document).on('keyup','#but', function(){
 
 function buscar_datos(consulta){
 	$.ajax({
-		url: 'controllers/test_controller.php' ,
+		url: 'views/async.php' ,
 		type: 'POST' ,
 		dataType: 'html',
-			data: {consulta:consulta},
+		data: {consulta:consulta},
 		success:function(respuesta){
 			
-	                console.log(respuesta);
+	               $("#datos").html(respuesta);
 	            
 		}
 	});

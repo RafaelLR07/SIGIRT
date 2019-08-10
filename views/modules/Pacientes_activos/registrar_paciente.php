@@ -14,7 +14,7 @@
 
 	<div class="container">
   <div class="title" align="center">
-      <strong><h3>Registro de formato RT-02</h3></strong><hr>
+      <strong><h3>Registro de formato RT-02 (inicio de tramite)</h3></strong><hr>
   </div>	
   <br><br><br>
           

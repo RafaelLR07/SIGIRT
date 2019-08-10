@@ -167,6 +167,13 @@
 
 	}
 
+	public function consulta_pades($table){
+		$stmt = Connection::open()->prepare("SELECT * FROM ".$table);
+		$stmt->execute();
+		return $stmt->fetchAll();
+		$stmt->close();		
+	}
+
 	public function consulta_medics($table){
 		$stmt = Connection::open()->prepare("SELECT * FROM ".$table);
 		$stmt->execute();

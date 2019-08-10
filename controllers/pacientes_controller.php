@@ -5,6 +5,22 @@
 	*/
 	class control_f02  {
 
+
+		//funcion para listar los diferentes tipos de padecimiento
+		public function verPade_controller(){
+
+			$respuesta=  datos_f02::consulta_pades("cat_nat_riesgo");
+			$cadena="";
+			foreach ($respuesta as $valor) {
+				$id = $valor['id_nat_riesgo'];
+				$cadena.="<option value=$id>".$valor['tipo_riesgo']."</option>";
+
+			}
+			echo $cadena;
+
+		}
+		
+
 		function queryMedics_paci($status,$filtro,$medico){
 		
 			$respuesta = datos_f02::query_medics_pac($status,$filtro,$medico);
@@ -32,7 +48,7 @@
 				class='btn btn-danger btn-sm' data-toggle='modal'
 				>"."<span class='glyphicon glyphicon-trash'></span>"."</a>";
 
-				$var_up_link = "content.php?p=editarPaciente&valor=20";
+				$var_up_link = "content.php?p=editarPaciente&valor=".$valor['token'];
 				$var_editar="<a  href=".$var_up_link."
 				class='btn btn-success btn-sm' data-toggle='modal'
 				>"."<span class='glyphicon glyphicon-edit'></span>"."</a>";
@@ -82,7 +98,7 @@
 				class='btn btn-danger btn-sm' data-toggle='modal'
 				>"."<span class='glyphicon glyphicon-trash'></span>"."</a>";
 
-				$var_up_link = "content.php?p=editarPaciente&valor=20";
+				$var_up_link = "content.php?p=editarPaciente&valor=".$valor['token'];
 				$var_editar="<a  href=".$var_up_link."
 				class='btn btn-success btn-sm' data-toggle='modal'
 				>"."<span class='glyphicon glyphicon-edit'></span>"."</a>";
@@ -124,7 +140,7 @@
 				class='btn btn-danger btn-sm' data-toggle='modal'
 				>"."<span class='glyphicon glyphicon-trash'></span>"."</a>";
 
-				$var_up_link = "content.php?p=editarPaciente&valor=20";
+				$var_up_link = "content.php?p=editarPaciente&valor=".$valor['token'];
 				$var_editar="<a  href=".$var_up_link."
 				class='btn btn-success btn-sm' data-toggle='modal'
 				>"."<span class='glyphicon glyphicon-edit'></span>"."</a>";
@@ -237,7 +253,7 @@
 		//funcion para listar los diferentes tipos de padecimiento
 		public function verPade_controller(){
 
-			$respuesta=  datos_f02::consulta_grl_model("cat_nat_riesgo");
+			$respuesta=  datos_f02::consulta_pades("cat_nat_riesgo");
 			$cadena="";
 			foreach ($respuesta as $valor) {
 				$id = $valor['id_nat_riesgo'];

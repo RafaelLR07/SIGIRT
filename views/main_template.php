@@ -6,6 +6,8 @@
 	<link rel="stylesheet" type="text/css" href="views/includes/bootstrap/css/bootstrap.min.css">
   	<link rel="stylesheet" type="text/css" href="views/includes/css/styles.css">
 	<link rel="icon" type="image/png" href="views/includes/images/icon.png">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
 	<style type="text/css">
 		.encabezado:hover{
@@ -74,8 +76,7 @@
 	</div>
 
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
   <!-- Bootstrap's JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
   <script type="text/javascript" src="views/includes/js/basics.js"></script>

@@ -20,6 +20,7 @@
           <ul class="dropdown-menu">
             <li><a href="content.php?p=activos" class="encabezado">Activos</a></li>
             <li><a href="content.php?p=recha" class="encabezado">Rechazados</a></li>
+            <li><a href="content.php?p=pendientes" class="encabezado">Pendientes</a></li>
             
 
           </ul>

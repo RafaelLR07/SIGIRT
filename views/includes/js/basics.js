@@ -1,32 +1,9 @@
 
-$(buscar_datos());
-
-$(document).on('keyup','#but', function(){
-		valor = $(this).val();
-
-		if (valor != "") {
-			buscar_datos(valor);
-		}else{
-			buscar_datos();
-		}
- 	
- });
 
 
-function buscar_datos(consulta){
-	$.ajax({
-		url: 'views/async.php' ,
-		type: 'POST' ,
-		dataType: 'html',
-		data: {consulta:consulta},
-		success:function(respuesta){
-			
-	               $("#datos").html(respuesta);
-	            
-		}
-	});
 
-}
+
+
 
        
 

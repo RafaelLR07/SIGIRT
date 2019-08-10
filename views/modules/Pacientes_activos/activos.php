@@ -1,30 +1,43 @@
-  <div class="title" align="center">
+
+<div class="title" align="center">
       <strong><h3>Pacientes Activos</h3></strong><hr>
   </div>  
 <br>
 
+
 <div class="container">
-    <div class="col-xs-12">
+  <div class="col-xs-12">
     <div class="row">
-<div class="bus">
-  <input class="form-control" type="text" id="but" placeholder="hola">
-</div>
-<button id="more" type="button" class="btn btn-primary btn-lg" 
-          onclick="window.location.href='content.php?p=nuevo_paciente'">
-            <span class="glyphicon glyphicon-plus"></span> Nuevo paciente
-          </button>
+      <div class="bus">
+        <?php 
+          $user = $_SESSION['tipoUsuario'];
 
-    <?php 
-          /*$valor="";
-          $f02_var = new control_f02();
+            
+            if($user=="Medico"){
+              echo '<input class="form-control" type="text" id="but_med" placeholder="buscar en" <br>';
 
-          $datos_user = $f02_var->pacAct_controller();
-          echo $datos_user;*/
-          //echo '<br> <br> <br>';  
-          //$f02_var->saludo();
+              echo '<input class="form-control" type="hidden" id="us" value="'.$user.'">';
+
+            
+             
+            }else{
+              echo '<input class="form-control" type="text" id="but" placeholder="busqueda">';            
+              echo '<input class="form-control" type="hidden" id="us" value="0">';
+            }
 
          ?>
-         <div class="datos" id="datos"></div>
+
+        
+      </div>
+      
+      <button id="more" type="button" class="btn btn-primary btn-lg" 
+          onclick="window.location.href='content.php?p=nuevo_paciente'">
+            <span class="glyphicon glyphicon-plus"></span> Nuevo paciente
+      </button>
+
+      <div class="datos" id="datos"></div>
+    </div>
+  </div>
 </div>
-</div>
-</div>
+
+<script type="text/javascript" src="views/includes/js/serch_act.js"></script>

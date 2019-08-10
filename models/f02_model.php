@@ -12,13 +12,11 @@
 	   public function regis_rt_02($table,$dates,$id_pac,$id_pad_x,$token){
 		$stmt = Connection::open()->prepare("INSERT INTO $table(
 				fecha_def, unidad_med_ini, fecha_atencion, fecha_urgencias,	pad_actual,
-				exploracion_fisica, lab_gabinete, diag_nosologico, diag_etiologico, diag_anatomo, pronostico, fecha_ini_lic_med, fecha_fin_lic_med, status, dias_lic, token, id_medicos, id_nat_riesgo, id_pacientes_grl, id_pad_x)
+				exploracion_fisica, lab_gabinete, diag_nosologico, diag_etiologico, diag_anatomo, pronostico, fecha_ini_lic_med, fecha_fin_lic_med, status_t, dias_lic, token, id_medicos, id_nat_riesgo, id_pacientes_grl, id_pad_x)
 				VALUES(
 				:fecha_def, :unidad_med_ini,:fecha_atencion,:fecha_urgencias,:pad_actual,
 				:exploracion_fisica,:lab_gabinete,:diag_nosologico,:diag_etiologico,
 				:diag_anatomo, :pronostico, :fecha_ini_lic_med, :fecha_fin_lic_med, :status, :dias_lic, :token, :id_medicos, :id_nat_riesgo, :id_pacientes_grl, :id_pad_x)");
-
-
 		
 			$stmt->bindParam(":fecha_def",$dates['fecha_def'], PDO::PARAM_STR);
 			$stmt->bindParam(":unidad_med_ini",$dates['uni_med'], PDO::PARAM_STR);
@@ -33,7 +31,7 @@
 			$stmt->bindParam(":pronostico",$dates['pronostico'], PDO::PARAM_STR);
 			$stmt->bindParam(":fecha_ini_lic_med",$dates['fech_ini'], PDO::PARAM_STR);
 			$stmt->bindParam(":fecha_fin_lic_med",$dates['fech_fin'], PDO::PARAM_STR);
-			$stmt->bindParam(":status",$dates['status'], PDO::PARAM_STR);
+			$stmt->bindParam(":status_t",$dates['status'], PDO::PARAM_STR);
 			$stmt->bindParam(":dias_lic",$dates['dias_lic'], PDO::PARAM_STR);
 			$stmt->bindParam(":token",$token, PDO::PARAM_STR);
 			$stmt->bindParam(":id_medicos",$dates['medico'], PDO::PARAM_STR);
@@ -120,22 +118,48 @@
 
 
 	//pack(format)c pendientes vista
-	public function pacAct_model($table,$filtro){
+	public function pacAct_model($status,$filtro){
 		
-		$query = "CALL getPacientes_act(:filtro)";
+		$query = "CALL getPacientes_act(:filtro,:status)";
 		$stmt = Connection::open()->prepare($query);
 
-		$stmt->bindParam(":filtro", $filtro ,PDO::PARAM_STR);
-		$stmt->execute();
-		return $stmt->fetchAll();
+		$stmt->bindParam(":filtro", $filtro, PDO::PARAM_STR);
+		$stmt->bindParam(":status", $status, PDO::PARAM_STR);
+		if($stmt->execute()){
+			return $stmt->fetchAll();
+		}else{
+			return "error";
+		}
 
 		$stmt->close();
 
 	
 	}
 
-	public function consulta_grl_model($table){
-		$stmt = Connection::open()->prepare("SELECT * FROM ".$table);
+	public function consulta_grl_model($table,$status){
+		$filtro="";
+		$query = "CALL getPacientes_act(:filtro,:status)";
+		$stmt = Connection::open()->prepare($query);
+		$stmt->bindParam(":filtro", $filtro, PDO::PARAM_STR);
+		$stmt->bindParam(":status", $status, PDO::PARAM_STR);
+		$stmt->execute();
+		return $stmt->fetchAll();
+		$stmt->close();
+
+
+	}
+
+	public function query_medics_pac($status,$filtro,$medico){
+		$query = "CALL queryMedi_pac(:status, :filtro, :medico)";
+		$stmt = Connection::open()->prepare($query);
+		$fill = "";
+
+		if($filtro!=null){
+			$fill = $filtro;
+		}
+		$stmt->bindParam(":filtro", $fill, PDO::PARAM_STR);
+		$stmt->bindParam(":status", $status, PDO::PARAM_STR);
+		$stmt->bindParam(":medico", $medico, PDO::PARAM_STR);
 		$stmt->execute();
 		return $stmt->fetchAll();
 		$stmt->close();

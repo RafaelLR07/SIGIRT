@@ -4,36 +4,43 @@
 	* 
 	*/
 	class control_f02  {
+
+		function queryMedics_paci($status,$filtro,$medico){
 		
-		public function imprimir($value)
-		{
-			$respuesta = datos_f02::pacAct_model("pacientes_grl",$value);
+			$respuesta = datos_f02::query_medics_pac($status,$filtro,$medico);
 			$cadena="";
+			
 			$cadena.="<table class='table table-striped' id='tabla_resultado' style='position:relative'>
 			
 				<tr class='table-bordered'>
 					<th >NOMBRE</th>
 					<th >APELLIDO PATERNO</th>
 					<th >APELLIDO MATERNO</th>
+					<th>ID FRTO2</th>
 					<th >ACCIÓN</th>
-				
 					
 				</tr>
 			";
+			if($respuesta==null){
+				$cadena.='<div class="alert alert-danger">Sin resultados</div>';
+				 return $cadena;
+			}
+			
 			foreach ($respuesta as $valor) {
 				$var_del_link = "#delete_".$valor['id_pacientes_grl'];
 				$var_del_ever = "<a  href=".$var_del_link."
 				class='btn btn-danger btn-sm' data-toggle='modal'
 				>"."<span class='glyphicon glyphicon-trash'></span>"."</a>";
 
-				$var_up_link = "content.php?p=editarPaciente";
+				$var_up_link = "content.php?p=editarPaciente&valor=20";
 				$var_editar="<a  href=".$var_up_link."
 				class='btn btn-success btn-sm' data-toggle='modal'
 				>"."<span class='glyphicon glyphicon-edit'></span>"."</a>";
-				$cadena.='<tr>
+				$cadena.='<tr> 
 							<td>'.$valor['nombre'].'</td>
 							<td>'.$valor['ape_pater'].'</td>
 							<td>'.$valor['ape_mater'].'</td>
+							<td>'.$valor['curp'].'</td>
 							<td>'.$var_del_ever.$var_editar.'</td>';
 
 				include("../views/modules/Modals/down_pac.php");
@@ -44,22 +51,14 @@
 
 			return $cadena;
 
+			
+		  
 		}
-
-
-	 	public function saludo()
-	 	{	
-	 		if (isset($_POST['ap_pater'])) {
-	 			
-	 			echo "definido";
-	 		}
-	 	}
-
-
-
-		function pacAct_controller(){
 		
-			$respuesta = datos_f02::consulta_grl_model("pacientes_grl");
+		public function activosQuery_f_controller($status,$value)
+		{	
+			$respuesta = datos_f02::pacAct_model($status,$value);
+			
 			$cadena="";
 			$cadena.="<table class='table table-striped' id='tabla_resultado' style='position:relative'>
 			
@@ -67,6 +66,54 @@
 					<th >NOMBRE</th>
 					<th >APELLIDO PATERNO</th>
 					<th >APELLIDO MATERNO</th>
+					<th >APELLIDO MATERNO</th>
+					<th >ACCIÓN</th>
+				
+					
+				</tr>
+			";
+			if($respuesta==null){
+				$cadena.='<div class="alert alert-danger">Sin resultados</div>';
+			}
+			
+			foreach ($respuesta as $valor) {
+				$var_del_link = "#delete_".$valor['id_pacientes_grl'];
+				$var_del_ever = "<a  href=".$var_del_link."
+				class='btn btn-danger btn-sm' data-toggle='modal'
+				>"."<span class='glyphicon glyphicon-trash'></span>"."</a>";
+
+				$var_up_link = "content.php?p=editarPaciente&valor=20";
+				$var_editar="<a  href=".$var_up_link."
+				class='btn btn-success btn-sm' data-toggle='modal'
+				>"."<span class='glyphicon glyphicon-edit'></span>"."</a>";
+				$cadena.='<tr>
+							<td>'.$valor['nombre'].'</td>
+							<td>'.$valor['ape_pater'].'</td>
+							<td>'.$valor['ape_mater'].'</td>
+							<td>'.$valor['id_frt02'].'</td>
+							<td>'.$var_del_ever.$var_editar.'</td>';
+
+				include("../views/modules/Modals/down_pac.php");
+
+				$cadena.='</tr>';
+			}
+			$cadena.="</table";
+			
+			return $cadena;
+
+		}
+
+		function activosQuery_unf_controller($stat){
+		
+			$respuesta = datos_f02::consulta_grl_model("pacientes_grl",$stat);
+			$cadena="";
+			$cadena.="<table class='table table-striped' id='tabla_resultado' style='position:relative'>
+			
+				<tr class='table-bordered'>
+					<th >NOMBRE</th>
+					<th >APELLIDO PATERNO</th>
+					<th >APELLIDO MATERNO</th>
+					<th>asdasd<th>
 					<th >ACCIÓN</th>
 					
 				</tr>
@@ -77,14 +124,15 @@
 				class='btn btn-danger btn-sm' data-toggle='modal'
 				>"."<span class='glyphicon glyphicon-trash'></span>"."</a>";
 
-				$var_up_link = "content.php?p=editarPaciente";
+				$var_up_link = "content.php?p=editarPaciente&valor=20";
 				$var_editar="<a  href=".$var_up_link."
 				class='btn btn-success btn-sm' data-toggle='modal'
 				>"."<span class='glyphicon glyphicon-edit'></span>"."</a>";
-				$cadena.='<tr>
+				$cadena.='<tr> 
 							<td>'.$valor['nombre'].'</td>
 							<td>'.$valor['ape_pater'].'</td>
 							<td>'.$valor['ape_mater'].'</td>
+							<td>'.$valor['id_frt02'].'</td>
 							<td>'.$var_del_ever.$var_editar.'</td>';
 
 				include("../views/modules/Modals/down_pac.php");

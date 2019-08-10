@@ -1,24 +1,39 @@
   <div class="title" align="center">
       <strong><h3>Pacientes rechazados</h3></strong><hr>
   </div>  
-
-<button id="more" type="button" class="btn btn-primary btn-lg" 
-          onclick="window.location.href='content.php?p=nuevo_paciente'">
-            <span class="glyphicon glyphicon-plus"></span> Nuevo paciente
-          </button>
-
-<!--<input type="text" id="but">-->
+<br>
 
 <div class="container">
-    <?php 
-          $valor="";
-          $f02_var = new control_f02();
+ <div class="col-xs-12">
+    <div class="row">
+      <div class="bus">
+       
+        <?php 
+          $user = $_SESSION['tipoUsuario'];
 
-          $datos_user = $f02_var->pacAct_controller();
-          echo $datos_user;
-          //echo '<br> <br> <br>';  
-          //$f02_var->saludo();
+            
+            if($user=="Medico"){
+              echo '<input class="form-control" type="text" id="but_med_recha" placeholder="buscar en" <br>';
+
+              echo '<input class="form-control" type="" id="us" value="'.$user.'">';
+
+            
+             
+            }/*else{
+              echo '<input class="form-control" type="text" id="but_pend" placeholder="hola">';            
+              echo '<input class="form-control" type="" id="us" value="0">';
+            }*/
 
          ?>
+      
+      </div>
+      <button id="more" type="button" class="btn btn-primary btn-lg" 
+          onclick="window.location.href='content.php?p=nuevo_paciente'">
+            <span class="glyphicon glyphicon-plus"></span> Nuevo paciente
+        </button>
 
+      <div class="" id="datos_recha"></div>
+    </div>
+  </div>
 </div>
+<script type="text/javascript" src="views/includes/js/serch_act.js"></script>

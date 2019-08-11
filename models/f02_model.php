@@ -16,7 +16,7 @@
 				VALUES(
 				:fecha_def, :unidad_med_ini,:fecha_atencion,:fecha_urgencias,:pad_actual,
 				:exploracion_fisica,:lab_gabinete,:diag_nosologico,:diag_etiologico,
-				:diag_anatomo, :pronostico, :fecha_ini_lic_med, :fecha_fin_lic_med, :status, :dias_lic, :token, :id_medicos, :id_nat_riesgo, :id_pacientes_grl, :id_pad_x)");
+				:diag_anatomo, :pronostico, :fecha_ini_lic_med, :fecha_fin_lic_med, :status_t, :dias_lic, :token, :id_medicos, :id_nat_riesgo, :id_pacientes_grl, :id_pad_x)");
 		
 			$stmt->bindParam(":fecha_def",$dates['fecha_def'], PDO::PARAM_STR);
 			$stmt->bindParam(":unidad_med_ini",$dates['uni_med'], PDO::PARAM_STR);
@@ -49,6 +49,7 @@
 
 	}
 
+
 	public function regist_pac_general($dates,$table){
 		$stmt = Connection::open()->prepare("INSERT INTO $table(ape_pater, ape_mater, nombre, curp, rfc) VALUES (:ap_pater, :ap_mater, :nombre,:curp,:rfc)");
 
@@ -73,10 +74,10 @@
 		
 	}
 
-	public function regis_checkx_model($id,$datos_mod, $table){
+	public function regis_checkx_model($id,$datos_mod, $table,$token){
 		
-		$stmt = Connection::open()->prepare("INSERT INTO $table(pad1,pad2,pad3,pad4,pad5,pad6,pad7,id_pacientes_grl)
-			VALUES (:pad1,:pad2,:pad3,:pad4,:pad5,:pad6,:pad7,:id_pacientes_grl)");
+		$stmt = Connection::open()->prepare("INSERT INTO $table(pad1,pad2,pad3,pad4,pad5,pad6,pad7,token,id_pacientes_grl)
+			VALUES (:pad1,:pad2,:pad3,:pad4,:pad5,:pad6,:pad7,:token,:id_pacientes_grl)");
 		$stmt->bindParam(":pad1", $datos_mod['pad1'],PDO::PARAM_STR);
 		$stmt->bindParam(":pad2", $datos_mod['pad2'],PDO::PARAM_STR);
 		$stmt->bindParam(":pad3", $datos_mod['pad3'],PDO::PARAM_STR);
@@ -84,6 +85,7 @@
 		$stmt->bindParam(":pad5", $datos_mod['pad5'],PDO::PARAM_STR);
 		$stmt->bindParam(":pad6", $datos_mod['pad6'],PDO::PARAM_STR);
 		$stmt->bindParam(":pad7", $datos_mod['pad7'],PDO::PARAM_STR);
+		$stmt->bindParam(":token", $token,PDO::PARAM_STR);
 		$stmt->bindParam(":id_pacientes_grl", $id ,PDO::PARAM_STR);
 		
 		
@@ -167,11 +169,64 @@
 
 	}
 
+	public function llenadoF02($token){
+		$query = "CALL llenadoF02_update(:token)";
+		$stmt = Connection::open()->prepare($query);
+		
+		$stmt->bindParam(":token", $token, PDO::PARAM_STR);
+		
+		if($stmt->execute()){
+			$datos = $stmt->fetch();	
+			if($datos){
+				return $datos;
+			}else{
+				return "error";
+			}
+		}else{
+			return "error";
+		}
+		$stmt->close();
+
+
+	}
+
+	public function consulta_padesFill($table,$filtro){
+
+		$kuery = "SELECT tipo_riesgo FROM $table WHERE id_nat_riesgo = :filtro";
+
+		$stmt = Connection::open()->prepare($kuery);
+		$stmt->bindParam(":filtro", $filtro, PDO::PARAM_STR);
+			
+		if($stmt->execute()){
+			return $stmt->fetchAll();	
+			
+		}else{
+			return "error";
+		}
+		
+		
+		$stmt->close();
+	}
+
 	public function consulta_pades($table){
-		$stmt = Connection::open()->prepare("SELECT * FROM ".$table);
-		$stmt->execute();
-		return $stmt->fetchAll();
-		$stmt->close();		
+
+		$kuery = "SELECT * FROM $table";
+
+		$stmt = Connection::open()->prepare($kuery);
+			
+		if($stmt->execute()){
+			$datos = $stmt->fetchAll();	
+			if($datos){
+				return $datos;
+			}else{
+				return "error";
+			}
+		}else{
+			return "error";
+		}
+		
+		
+		$stmt->close();
 	}
 
 	public function consulta_medics($table){
@@ -205,6 +260,7 @@
 		$stmt->close();		
 	}
 	
+
 	public function padecimientos_x($table,$id_pac_grl){
 		$stmt = Connection::open()->prepare("SELECT * FROM $table WHERE id_pad_x =:id");
 		$stmt->bindParam(":id", $id_pac_grl, PDO::PARAM_STR);

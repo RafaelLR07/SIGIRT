@@ -5,21 +5,83 @@
 	*/
 	class control_f02  {
 
+		public function updateF02(){
+			
+			if(isset($_POST['ap_pater'])){
+				
+				$datos_control = array(
+							'ap_pater' => $_POST['ap_pater'],
+							'ap_mater' => $_POST['ap_mater'],
+							'nombre' => $_POST['nombre'],
+							'curp' => $_POST['curp'],
+							'rfc' => $_POST['rfc']);
 
-		//funcion para listar los diferentes tipos de padecimiento
-		public function verPade_controller(){
+				if(isset($_POST['padx'])){
+					$vaa = $_POST['padx'];
 
-			$respuesta=  datos_f02::consulta_pades("cat_nat_riesgo");
-			$cadena="";
-			foreach ($respuesta as $valor) {
-				$id = $valor['id_nat_riesgo'];
-				$cadena.="<option value=$id>".$valor['tipo_riesgo']."</option>";
+					$contador=1;
+					$padx = array("pad1" => "","pad2" => "","pad3" => "",
+								  "pad4" => "","pad5" => "","pad6" => "", 
+								  "pad7" =>  "" );
 
+					foreach ($vaa as $key => $valor) {
+						$padx["pad$contador"] = $valor;
+					 	$contador++;
+					 }	
+				}
+
+				 $datos_f02 = array(
+							'naturaleza' => $_POST['naturaleza_ries'],
+							'fecha_def' => $_POST['fecha_def'],
+							'uni_med' => $_POST['uni_med'],
+							'first_at_med' => $_POST['first_at_med'],
+							'fech_urgencias' => $_POST['fech_urgencias'],
+							'pad_actual' => $_POST['pad_actual'],
+							'exp_fisica' => $_POST['exp_fisica'],
+							'labo' => $_POST['labo'],
+							'diag_noso' => $_POST['diag_noso'],
+							'diag_etio' => $_POST['diag_etio'],
+							'diag_ana' => $_POST['diag_ana'],
+							'pronostico' => $_POST['pronostico'],
+							'fech_ini' => $_POST['fech_ini'],
+							'fech_fin' => $_POST['fech_fin'],
+							'dias_lic' => $_POST['dias_lic'],
+							'medico' => $_POST['medico'],
+							'status' => 'PEND'
+
+						);
+
+				//token de tramite
+				$token = $this->getToken();
+
+				//pacientes_grl saved
+				$respuesta = datos_f02::regist_pac_general($datos_control,"pacientes_grl"); 
+				//padecimientos x saved
+				$id_pac = datos_f02::getIdpac();
+				$respuesta = datos_f02::regis_checkx_model($id_pac,$padx,"padecimientos_x",$token); 
+
+				//se almacena el resto del RT-02
+				//get padx
+				$id_padX = datos_f02::getIdpadX();
+				
+				
+				
+				$respuesta = datos_f02::regis_rt_02('frt_02', $datos_f02, $id_pac, $id_padX,$token);  
+				
+				return $respuesta;
 			}
-			echo $cadena;
 
 		}
-		
+
+
+		//funcion para listar los diferentes tipos de padecimiento
+		public function llenadoEdicion(){
+			$token = $_GET['valor'];
+			$respuesta=  datos_f02::llenadoF02($token);
+			return $respuesta;
+
+		}
+
 
 		function queryMedics_paci($status,$filtro,$medico){
 		
@@ -225,28 +287,36 @@
 
 						);
 
-				
+				//token de tramite
+				$token = $this->getToken();
+
 				//pacientes_grl saved
 				$respuesta = datos_f02::regist_pac_general($datos_control,"pacientes_grl"); 
 				//padecimientos x saved
 				$id_pac = datos_f02::getIdpac();
-				$respuesta = datos_f02::regis_checkx_model($id_pac,$padx,"padecimientos_x"); 
+				$respuesta = datos_f02::regis_checkx_model($id_pac,$padx,"padecimientos_x",$token); 
 
 				//se almacena el resto del RT-02
 				//get padx
 				$id_padX = datos_f02::getIdpadX();
 				
-				//---$respuesta = 
-				//token de frt02
-				$token = $this->getToken();
+				
+				
 				$respuesta = datos_f02::regis_rt_02('frt_02', $datos_f02, $id_pac, $id_padX,$token);  
 				
 				return $respuesta;
 			}
 
 		}
-		//funcion para insertar los datos del checkbox de padecimiento X
-	
+
+		//funcion para listar los diferentes tipos de padecimiento
+		public function consultaNat($filtro){
+
+			$respuesta=  datos_f02::consulta_padesFill("cat_nat_riesgo",$filtro);
+			foreach ($respuesta as $key)
+			return $key;
+
+		}	
 
 
 
@@ -304,6 +374,7 @@
 
 		}
 		
+				
 
 		public function getPadeX_pac($id_paci_grl){
 

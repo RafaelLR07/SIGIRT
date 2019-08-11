@@ -28,7 +28,7 @@
                     		<td>OFICIO DE SOLICITUD DE CERTIFICACION DE LICENCIAS MEDICAS</td>
 
                     		<td class="buttons">                         
-		                     	<input type="checkbox" name="ad" class="form-control">   
+		                     	<input type="checkbox" name="ad" class="form-control" checked>   
 		                    </td>
                     	</tr>
 

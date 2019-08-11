@@ -8,6 +8,56 @@ procesos en el formato FT02
 class f02_methods
 
 {
+	public function padxScann($array)
+	{
+		  $padX = array('rina' => '','aliento' => '','lesion' => '','tox' => '','ebrio' =>'','drog' => '','medico' => '');
+                    
+             for ($i=1; $i < 7; $i++) { 
+                      
+                switch ($array['pad'.$i]) {
+                    case 'RIÑA':
+                      $padX['rina'] = "checked";
+                     break;
+                            
+                    case 'ALIENTO ALCOHOLICO':
+                       $padX['aliento'] = "checked";
+                     break;
+
+                    case 'INTENCIONALIDAD DE LA LESIÓN':
+                       $padX['lesion'] = "checked";
+                      break;
+                            
+                    case 'TÓXICOS':
+                      $padX['tox'] = "checked";
+                      break;
+                            
+                    case 'ESTADO DE EBRIEDAD':
+                       $padX['ebrio'] = "checked";
+                      break;
+                            
+                    case 'BAJO EFECTO DE DROGAS':
+                       $padX['drog'] = "checked";
+                      break;
+                            
+                    case 'POR PRESCRIPCIÓN MEDICA':
+                       $padX['medico'] = "checked";
+                      break;
+                            
+                    default:
+                      # code...
+                      break;
+                   }
+             }
+         return $padX;
+	}
+
+	public function llenaInputDatetime($fecha)
+	{
+		$arre_date = $this->divDatetime($fecha);
+		$datetime_conver = $arre_date['anio'].'-'.$arre_date['mes'].'-'.$arre_date['dia'].'T'.$arre_date['horas'].':'.$arre_date['mins'];
+		return $datetime_conver;
+
+	}
 
 	public function obtener_fecha2($date){
             list($anio, $mess, $dia) = explode("-", $date);

@@ -7,12 +7,113 @@ procesos en el formato FT02
 */
 class f02_methods
 
-{
+{	
+	public function scannSizeDocs($array)
+	{
+		$tamano = sizeof($array)+1;
+		for ($i=1; $i < $tamano; $i++) { 
+			if($array["docum".$i]==""){
+				return $i;
+			}
+		}
+		return $tamano;
+	}
+
+	public function scannDocs($valor,$array)
+	{
+		$tamano = sizeof($array)+1;
+		for ($i=01; $i < $tamano; $i++) { 
+			if($valor == $array["docum".$i]){
+				return "X";
+			}
+		}
+		return "";
+
+	}
+
+	public function scannAntec($value)
+	{	
+		$resp = array('si_ind' => '', 'no_ind'=>'');
+		if($value == 'si'){
+			$resp['si_ind'] = 'checked';
+			
+		}else if($value == 'no'){
+			$resp['no_ind'] = 'checked';
+		}
+		return $resp;
+	}
+
+	public function scannNaturaF01($natu_riesg)
+	{
+		$natu = array('A' =>'', 'B-T'=>'', 'B-D'=>'',
+						 'A-T'=>'','C' =>'');
+	
+		switch ($natu_riesg) {
+			case 'A':
+				$natu['A'] = "selected";
+				break;
+
+			case 'B-T':
+				$natu['B-T'] = "selected";
+				break;
+
+			case 'B-D':
+				$natu['B-D'] = "selected";
+				break;
+
+			case 'A-T':
+				$natu['A-T'] = "selected";
+				break;
+
+			case 'C':
+				$natu['C'] = "selected";
+				break;
+
+			default:
+				# code...
+				break;
+		}
+		return $natu;
+	}
+	
+	public function turnoScann($turno)
+	{	
+		$turnos = array('vespertino' =>'', 'nocturno'=>'', 'matutino'=>'',
+						 'mixto'=>'','jornada_acumulada' =>'');
+		
+		switch ($turno) {
+			case 'vespertino':
+				$turnos['vespertino'] = "selected";
+				break;
+
+			case 'nocturno':
+				$turnos['nocturno'] = "selected";
+				break;
+
+			case 'matutino':
+				$turnos['matutino'] = "selected";
+				break;
+
+			case 'mixto':
+				$turnos['mixto'] = "selected";
+				break;
+
+			case 'jornada_acumulada':
+				$turnos['jornada_acumulada'] = "selected";
+				break;
+
+			default:
+				# code...
+				break;
+		}
+		return $turnos;
+	}
+
 	public function padxScann($array)
 	{
 		  $padX = array('rina' => '','aliento' => '','lesion' => '','tox' => '','ebrio' =>'','drog' => '','medico' => '');
                     
-             for ($i=1; $i < 7; $i++) { 
+             for ($i=1; $i < 8; $i++) { 
                       
                 switch ($array['pad'.$i]) {
                     case 'RIÑA':

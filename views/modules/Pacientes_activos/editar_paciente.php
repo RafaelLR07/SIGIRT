@@ -3,12 +3,36 @@
   //consulta de 
   include_once "class/f02_methods.php";
   $f02_var = new control_f02();
+
   $valor = $f02_var->llenadoEdicion();
-  if($valor!="error" && $valor!=""){
-    //$valor = $f02_var->updateF02($valor['token']);
-  }else if ($valor=="error") {
+  if ($valor=="error") {
      header("Location: content.php?p=pendientes");
   }
+
+  if(isset($_GET['edicion'])){
+    echo "<div class='alert alert-success alert-dismissible fade in'><a href='#'' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Exito! <strong>Actualizado correctamente</strong></div>";
+  }
+  $input_adm = false;
+  if($_SESSION["tipoUsuario"] == "Admin" || $_SESSION["tipoUsuario"] == "Usuario"){
+
+     $input_adm = true;
+     $update = $f02_var->updateF02_admi_user($valor['token'],$valor['id_frt02']);
+     if($update=="aprobar"){
+        header("location: content.php?p=new_usuario&valor=".$valor['id_pacientes_grl']);
+     }else if($update=="rechazar"){
+       header("location: content.php?p=editarPaciente&edicion=true&valor=".$valor['token']);
+     }
+
+  }else if($_SESSION["tipoUsuario"] == "Medico"){
+      $update = $f02_var->updateF02($valor['token'],$valor['id_pacientes_grl']);
+    $input_adm = false;
+    if($update=="success"){
+          header("location: content.php?p=editarPaciente&edicion=true&valor=".$valor['token']);
+    }else if($update=="Error"){
+      echo "<div class='alert alert-danger alert-dismissible fade in'><a href='#'' class='close' data-dismiss='alert' aria-label='close'>&times;</a>Error <strong>¡en el usuario ó contraseña invalido!</strong></div>";
+    }
+  }
+  
   
 
 
@@ -28,25 +52,26 @@
 
                  
   <form class="formulario" method="POST"> 
+       
         <div class="info_personal">
          
           <div class="form-group">
               <label for="">Nombre</label>
               <div class="input">
-                  <input type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre" value = <?php echo $valor['nombre']; ?>>
+                  <input type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre" value = "<?php echo $valor['nombre']; ?>">
               </div>
           </div>
           <div class="form-group">
                <label for="">Apellido Paterno</label>
               <div class="input">
-                  <input type="text" class="form-control" id="ap_pater" placeholder="Apellido Paterno" name="ap_pater" value = <?php echo $valor['ape_pater']; ?>>
+                  <input type="text" class="form-control" id="ap_pater" placeholder="Apellido Paterno" name="ap_pater" value = "<?php echo $valor['ape_pater']; ?>">
               </div>
           </div>
 
           <div class="form-group">
               <label for="">Apellido Materno</label>
               <div class="input">
-                  <input type="text" class="form-control" id="ap_mater" placeholder="Apellido materno" name="ap_mater" value = <?php echo $valor['ape_mater']; ?>>
+                  <input type="text" class="form-control" id="ap_mater" placeholder="Apellido materno" name="ap_mater" value = "<?php echo $valor['ape_mater']; ?>">
               </div>
           </div>
           
@@ -105,7 +130,7 @@
               <div class="form-group">
               <label for="">Unidad médica</label>
               <div class="inputD">
-                  <input type="text" class="form-control" id="uni_med" name="uni_med" placeholder="Unidad medica" value="<?php echo $valor['unidad_med_ini'] ?>">
+                  <input type="text" class="form-control" id="uni_med" name="uni_med" placeholder="Unidad medica" value="<?php echo $valor['unidad_med_ini'];?>">
               </div>
           </div>
 
@@ -309,13 +334,29 @@
            </div>
 
         </div>
-            <div class="btn-group col-sm-8 col-lg-offset-9">
-              <button type="submint" class="btn btn-success">Registrar</button>
-           </div> 
+            <div class="btn-group col-sm-6 col-lg-offset-7">
+              <!--<button type="submint" class="btn btn-success">Registrar</button><br>-->
+              <?php 
+                if($valor['status_t'] == "ACTIVO"){
+                  echo "";
+                }else
+                if($input_adm == true){
+                  echo '<input class="btn btn-success" type="submit" name = "aprobar" value="aprobar"/><br><br>
+                        <input class="btn btn-danger" type="submit" name = "rechazar"  value="rechazar"/>';
+                }else{
+                  echo '<input class="btn btn-success" type="submit" name = "medic_but"  value="ACTUALIZAR">';
+                }
+               ?>
+              
+            </div> 
+           
          </div>                    
      
            
         </form>
+        <br>
+
+       
 
      </div>
     <br><br><br>

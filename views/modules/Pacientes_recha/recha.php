@@ -15,7 +15,7 @@
             if($user=="Medico"){
               echo '<input class="form-control" type="text" id="but_med_recha" placeholder="buscar en" <br>';
 
-              echo '<input class="form-control" type="" id="us" value="'.$user.'">';
+              echo '<input class="form-control" type="hidden" id="us" value="'.$user.'">';
 
             
              

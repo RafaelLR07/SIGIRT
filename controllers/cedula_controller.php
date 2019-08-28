@@ -5,6 +5,81 @@
 	*/
 	class cedula_controller 
 	{	
+		public function is_fin($token)
+		{	
+			$resp = "";
+			$respuesta_grl = cedula_model::isFin($token);
+			foreach ($respuesta_grl as $key);
+			if($key['tramite_avan']!=""){
+				$resp = "si";
+			}else{
+				$resp = "no";
+			}
+			return $resp;
+		}
+		public function fina_ced($token)
+		{
+			if(isset($_POST['fin'])){
+				$respuesta_grl = cedula_model::fin_cedula($token,'FIN');
+				return $respuesta_grl;
+			}
+		}
+		public function udpateCedu($token)
+		{
+			if(isset($_POST['regiss'])){
+			
+			    $dates_up = array(
+			    	'fecha_nac' => $_POST['fecha_nac'],
+			    	'edad' => $_POST['edad'],
+					'sexo' => $_POST['sexo'],
+					'tel_par' => $_POST['tel_part'],
+					'mail' => $_POST['email'],
+					'calle' => $_POST['calle'],
+					'colonia' => $_POST['colonia'],
+					'localidad' => $_POST['localidad'],
+					'num_int' => $_POST['numero_int'],
+					'num_ext' => $_POST['numero_ext'],
+					'municipio' => $_POST['municipio'],
+					'cp' => $_POST['cp'],
+					'estado' => $_POST['estado'],
+
+					'nom_dep' => $_POST['nom_dep'],
+					'adscripcion' => $_POST['adscripcion'],
+					'actividad' => $_POST['actividad'],
+					'uni_med'=> $_POST['uni_med'],
+					'ramo' => $_POST['ramo'],
+					'tel_ofi' => $_POST['tel_ofi'],
+					'cli_ads' => $_POST['cli_ads'],
+					'otros_r' => $_POST['otros_r'],
+					'riesgo' => $_POST['riesgo'],
+					'secuelas' => $_POST['secuelas'],
+					'parcial' => $_POST['parcial'],
+					'porcentaje' => $_POST['porcentaje'],
+					'fecha_reali' => $_POST['fech_realiz'],
+					'delegacion' => $_POST['delegacion']
+						);
+				
+				
+			$respuesta_grl = cedula_model::update_cedula($dates_up,$token);
+			return $respuesta_grl;
+
+			}
+
+		}
+
+		public function llenadoCedula_up($token)
+		{
+			$respuesta = cedula_model::getInf_ced($token);
+			foreach ($respuesta as $key);
+			return $key;
+		}
+
+		public function llenadoGrl_up($token)
+		{
+			$respuesta = cedula_model::getInf_grl($token);
+			foreach ($respuesta as $key);
+			return $key;
+		}
 		public function getAnt_F02($id){
 
 			$respuesta = cedula_model::getAnt_F02("frt_02",$id);
@@ -91,7 +166,7 @@
 							'parcial' => $_POST['parcial'],
 							'porcentaje' => $_POST['porcentaje'],
 							'fecha_reali' => $_POST['fech_realiz'],
-							'delegacion' => $_POST['delegacion'],
+							'delegacion' => $_POST['delegacion']
 						);
 				
 				

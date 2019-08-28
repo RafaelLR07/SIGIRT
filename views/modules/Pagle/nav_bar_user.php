@@ -25,7 +25,6 @@
           </ul>
         </li>
       
-        <li><a href="content.php?p=usuarios" class="encabezado">Usuarios</a></li>
         <li><a href="content.php?p=profile" class="encabezado">Perfil</a></li>
 
         <!--<li><a href="content.php?p=navv" class="encabezado">Registrar Fr-02</a></li>-->

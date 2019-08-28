@@ -24,17 +24,34 @@
 			   $url_model=="fr02"){
 			   $module_url = "views/modules/Perfil/mainDashboard.php";
 
-			}else if($url_model=="cedula"||
-			   $url_model=="fr02"){
+			}else if($url_model=="new_usuario"){
+			   $module_url = "views/modules/usuarios/reg_usuario_pac.php";
+
+			}else if($url_model=="reg_usuario"){
+			   $module_url = "views/modules/usuarios/reg_usuario.php";
+
+			}else if($url_model=="editarUsuario"){
+			   $module_url = "views/modules/usuarios/editar_usuario.php";
+
+			}
+			else if($url_model=="cedula"){
 			   $module_url = "views/modules/FormsPaci/Form_cedula.php";
 
 			}
-			else if($url_model=="rt-01"||$url_model=="fr02"){
+			else if($url_model=="cedulaup"){
+			   $module_url = "views/modules/FormsPaci/editCedula.php";
+
+			}
+			else if($url_model=="rt-01"){
 			   $module_url = "views/modules/FormsPaci/Form_rt01.php";
 
 			}
+			else if($url_model=="rt01Edit"){
+			   $module_url = "views/modules/FormsPaci/rt01Edit.php";
 
-			else if($url_model=="rt-03"||$url_model=="fr02"){
+			}
+
+			else if($url_model=="rt-03"){
 			   $module_url = "views/modules/FormsPaci/Form_rt03.php";
 
 			}

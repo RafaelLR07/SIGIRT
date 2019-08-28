@@ -114,13 +114,8 @@
 					  <div class="avances">
 					  	<div class="title_avan">
 					  	<a href="content.php?p=dashboard" class="link">
-					  	 <h4 class="title_a">Avance de tramite folio</h4>	
-						 <h4 class="subtitle">fecha: dd/mm/aaaa</h4>
-						 </a>	
-						</div><br>
-						<div class="grafica-avan">
-						 <input type="text" value="20" class="dial">
-						</div>	
+					  	 <h4 class="title_a" style="font-size:24px;">Avance de tramite de riesgo</h4>	
+						 
 					 </center>		
 					  </div>	
 					  
@@ -178,6 +173,8 @@
 				                      </div>
 				                    </div>
 			                    </div>
+
+			                    
 
 			                    <div class="form-group row">
 			                       <div class="dom">

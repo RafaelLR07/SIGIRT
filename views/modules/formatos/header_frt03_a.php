@@ -28,7 +28,7 @@
 			
 			$this->Image('images/mexico2.png', 170, 5, 40 );
 
-			//$this->Image('images/logo issste 2019.jpg', 5, 250,200);
+			$this->Image('images/image4.png', 5, 50,200);
 			
 		}
 		

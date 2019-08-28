@@ -5,6 +5,94 @@
 */
 class f01_controller
 {	
+	public function is_fin($token)
+		{	
+			$resp = "";
+			$respuesta_grl = datos_f01::isFin($token);
+			foreach ($respuesta_grl as $key);
+			if($key['tram_avan']!=""){
+				$resp = "si";
+			}else{
+				$resp = "no";
+			}
+			return $resp;
+		}
+
+	public function fina_r01($token)
+		{
+			if(isset($_POST['fin'])){
+				$respuesta_grl = datos_f01::fin_cedula($token,'FIN');
+				return $respuesta_grl;
+			}
+		}
+
+	public function update_f01($token)
+	{
+		if(isset($_POST['regiss'])){
+
+				$info_dep = array(
+					'ramo' =>$_POST['ramo'],
+					'calle' =>$_POST['calle_dep'],
+					'colonia' =>$_POST['col_dep'],
+					'cp' =>$_POST['cp_dep'],
+					'numero' =>$_POST['num_dep'],
+					'municipio' =>$_POST['muni_dep'],
+					'telefono_dep' =>$_POST['tel_dep'],
+					'puesto_jefe' =>$_POST['puesto_jef'],
+					'no_empleado_jef' =>$_POST['no_empleado_jef'],
+					'fecha_entera_jef' =>$_POST['fech_riesgo'], 
+					'nom_jef' =>$_POST['nom_jef'],
+					'ape_pat_jef' =>$_POST['ape_pater_jef'],
+					'ape_mat_jef' =>$_POST['ape_mater_jef'],
+					'ape_pat_repre_dep' =>$_POST['ape_pater_rep'],
+					'ape_mat_repre_dep' =>$_POST['ape_mater_rep'],
+					'nom_repre_dep' =>$_POST['nombre_rep'],
+						//*****************************************
+					'no_empleado' => $_POST['no_empleado'],
+					'puesto' => $_POST['puesto'],
+					'fecha_ing_laboral' => $_POST['fecha_in'],
+					'descripcion_actividades' => $_POST['desc_act'],
+					'fecha_pri_cotizacion' => $_POST['fecha_cotiza'],
+					'turno'=> $_POST['turno_tra'],
+					'hora_entra' => $_POST['hor_entr'],
+					'hora_sali' => $_POST['hor_salid'],
+						//************************************
+					'nom_subdelg' => $_POST['nom_sub'],
+					'ape_pat_subdel' => $_POST['ape_pat_sub'],
+					'ape_mat_subdel' => $_POST['ape_mat_sub'],
+					'nom_fam' => $_POST['nom_fam'],
+					'ape_pat_fam' => $_POST['apep_fam'],
+					'ape_mat_fam' => $_POST['apem_fam'],
+					'parenteso' => $_POST['parentesco'],
+					'fecha_accidente' => $_POST['fech_acc'],
+					'descripcion_rt' => $_POST['desc_rt'],
+					'circuns' => $_POST['circuns']//*********************************
+				);
+			
+				
+							
+			
+				$respuesta = datos_f01::update_f01($info_dep,$token);  
+			
+			return $respuesta;
+				
+			}
+	}
+
+	public function llenadoF01_up($token)
+	{
+		$respuesta = datos_f01::llenadoF01_up($token);
+		
+		if($respuesta=="error"){
+			return "error";
+		}else{
+			foreach ($respuesta as $valor);
+			return $valor;	
+		}
+		
+	}
+
+
 	public function getF01_info($token){
 		
 		$respuesta=  datos_f01::getF01_inf($token);

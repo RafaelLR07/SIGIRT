@@ -66,7 +66,9 @@ $pdf = new PDF();
 	$pdf->Ln(0);
 	$pdf->SetX(140);
 	//$pdf->SetY(83);
-	$pdf->MultiCell(64,8,utf8_decode($valor_f02['unidad_med_ini']),1,'C',false);
+
+	$pdf->SetFillColor(206, 231, 239);
+	$pdf->MultiCell(64,8,utf8_decode($valor_f02['unidad_med_ini']),1,'C',true);
 
 
     //segunda parte naturaleza del riesgo y clinica
@@ -83,22 +85,22 @@ $pdf = new PDF();
 	$riesVal = $valor_riesgo['id_nat_riesgo'];
 	$naturaleza = $grlClass->getNat($riesVal);
 	
-
+	$pdf->SetFillColor(206, 231, 239);
 	$pdf->Ln(16);
 	$pdf->Cell(68,7,utf8_decode('ACCIDENTE CENTRO DE TRABAJO'),1,0,'J',false);
-	$pdf->Cell(17,7,utf8_decode($naturaleza['centro']),1,0,'C',false);
+	$pdf->Cell(17,7,utf8_decode($naturaleza['centro']),1,0,'C',true);
 
 	$pdf->Ln(7);
 	$pdf->Cell(68,7,utf8_decode('ACCIDENTE EN COMISIÓN'),1,0,'J',false);
-	$pdf->Cell(17,7,utf8_decode($naturaleza['comi']),1,0,'C',false);
+	$pdf->Cell(17,7,utf8_decode($naturaleza['comi']),1,0,'C',true);
 
 	$pdf->Ln(7);
 	$pdf->Cell(68,7,utf8_decode('ACCIDENTE EN TRAYECTO'),1,0,'J',false);
-	$pdf->Cell(17,7,utf8_decode($naturaleza['trayecto']),1,0,'C',false);
+	$pdf->Cell(17,7,utf8_decode($naturaleza['trayecto']),1,0,'C',true);
 
 	$pdf->Ln(7);
 	$pdf->Cell(68,7,utf8_decode('ENFERMEDAD DE TRABAJO'),1,0,'J',false);
-	$pdf->Cell(17,7,utf8_decode($naturaleza['enferme']),1,0,'C',false);
+	$pdf->Cell(17,7,utf8_decode($naturaleza['enferme']),1,0,'C',true);
 
 	$defTrue="";
 	$defDate = $valor_f02['fecha_def'];
@@ -118,8 +120,9 @@ $pdf = new PDF();
 	$pdf->SetFillColor(186, 190, 191);
 	$pdf->Cell(44,7,utf8_decode('FECHA'),1,0,'C',true);
 	//check de el apartado "Defuncion"
-	$pdf->Cell(17,21,utf8_decode($defTrue),1,0,'C',false);
-
+	$pdf->SetFillColor(206, 231, 239);
+	$pdf->Cell(17,21,utf8_decode($defTrue),1,0,'C',true);
+	$pdf->SetFillColor(186, 190, 191);
 	$pdf->ln(7);
 	$pdf->SetX(34);
 	$pdf->Cell(13,7,utf8_decode('DIA'),1,0,'C',false);
@@ -128,9 +131,10 @@ $pdf = new PDF();
 	
 	$pdf->ln(7);
 	$pdf->SetX(34);
-	$pdf->Cell(13,7,utf8_decode($fechaDiv_def['dia']),1,0,'C',false);
-	$pdf->Cell(15,7,utf8_decode($fechaDiv_def['mes']),1,0,'C',false);
-	$pdf->Cell(16,7,utf8_decode($fechaDiv_def['anio']),1,0,'C',false);
+	$pdf->SetFillColor(206, 231, 239);
+	$pdf->Cell(13,7,utf8_decode($fechaDiv_def['dia']),1,0,'C',true);
+	$pdf->Cell(15,7,utf8_decode($fechaDiv_def['mes']),1,0,'C',true);
+	$pdf->Cell(16,7,utf8_decode($fechaDiv_def['anio']),1,0,'C',true);
 
 	//minitabla de unidad medica kue expide
 	
@@ -145,10 +149,10 @@ $pdf = new PDF();
 
 	$pdf->Ln(7);
 	$pdf->SetX(135);
-	$pdf->Cell(13,8,utf8_decode($fechAten['dia']),1,0,'C',false);
-	$pdf->Cell(15,8,utf8_decode($fechAten['mes']),1,0,'C',false);
-	$pdf->Cell(16,8,utf8_decode($fechAten['anio']),1,0,'C',false);
-	$pdf->Cell(16,8,utf8_decode($fechAten['horas'].':'.$fechAten['mins'].' '.$fechAten['meridiano']),1,0,'C',false);
+	$pdf->Cell(13,8,utf8_decode($fechAten['dia']),1,0,'C',true);
+	$pdf->Cell(15,8,utf8_decode($fechAten['mes']),1,0,'C',true);
+	$pdf->Cell(16,8,utf8_decode($fechAten['anio']),1,0,'C',true);
+	$pdf->Cell(16,8,utf8_decode($fechAten['horas'].':'.$fechAten['mins'].' '.$fechAten['meridiano']),1,0,'C',true);
 
 	$pdf->Ln(10);
 	$pdf->SetFont('ARIAL','B',9);
@@ -163,16 +167,16 @@ $pdf = new PDF();
 
 
 	$pdf->SetXY(38,172);
-    $pdf->Cell(6,11,utf8_decode($urgeDate['dia_1']),1,0,'C',false);
-	$pdf->Cell(6,11,utf8_decode($urgeDate['dia_2']),1,0,'C',false);
-	$pdf->Cell(6,11,utf8_decode($urgeDate['mes_1']),1,0,'C',false);
-	$pdf->Cell(6,11,utf8_decode($urgeDate['mes_2']),1,0,'C',false);
-	$pdf->Cell(6,11,utf8_decode($urgeDate['anio_1']),1,0,'C',false);
-	$pdf->Cell(6,11,utf8_decode($urgeDate['anio_2']),1,0,'C',false);
-	$pdf->Cell(6,11,utf8_decode($urgeDate['horas_1']),1,0,'C',false);
-	$pdf->Cell(6,11,utf8_decode($urgeDate['horas_2']),1,0,'C',false);
-	$pdf->Cell(6,11,utf8_decode($urgeDate['mins_1']),1,0,'C',false);
-	$pdf->Cell(6,11,utf8_decode($urgeDate['mins_2']),1,0,'C',false);
+    $pdf->Cell(6,11,utf8_decode($urgeDate['dia_1']),1,0,'C',true);
+	$pdf->Cell(6,11,utf8_decode($urgeDate['dia_2']),1,0,'C',true);
+	$pdf->Cell(6,11,utf8_decode($urgeDate['mes_1']),1,0,'C',true);
+	$pdf->Cell(6,11,utf8_decode($urgeDate['mes_2']),1,0,'C',true);
+	$pdf->Cell(6,11,utf8_decode($urgeDate['anio_1']),1,0,'C',true);
+	$pdf->Cell(6,11,utf8_decode($urgeDate['anio_2']),1,0,'C',true);
+	$pdf->Cell(6,11,utf8_decode($urgeDate['horas_1']),1,0,'C',true);
+	$pdf->Cell(6,11,utf8_decode($urgeDate['horas_2']),1,0,'C',true);
+	$pdf->Cell(6,11,utf8_decode($urgeDate['mins_1']),1,0,'C',true);
+	$pdf->Cell(6,11,utf8_decode($urgeDate['mins_2']),1,0,'C',true);
 
 	$pdf->Ln(11);
 	$pdf->SetX(38);
@@ -193,7 +197,7 @@ $pdf = new PDF();
    	$pdf->SetX(102);
    	$pdf->SetFont('ARIAL','',8);
    	$pdf->Cell(8,9,utf8_decode('RIÑA'),1,0,'C',false);
-   	$pdf->Cell(8,9,utf8_decode(''),1,0,'C',false);
+   	$pdf->Cell(8,9,utf8_decode(''),1,0,'C',true);
 	$pdf->MultiCell(24,4.5,utf8_decode('ALIENTO ALCOHOLICO'),1,'C',false);
 	$pdf->SetXY(142,183);
 	$pdf->SetFont('Symbol','',30);
@@ -202,31 +206,32 @@ $pdf = new PDF();
 	$pdf->SetFont('ARIAL','',7);
 	$pdf->MultiCell(25,4.5,utf8_decode('INTENCIONALIDAD DE LA LESIÓN'),1,'C',false);
 	$pdf->SetXY(175,183);
-	$pdf->Cell(8,9,utf8_decode(''),1,0,'C',false);
+	$pdf->Cell(8,9,utf8_decode(''),1,0,'C',true);
 
 	$pdf->SetFont('ARIAL','',8);
 	$pdf->Cell(14,9,utf8_decode('TÓXICOS'),1,0,'C',false);
-	$pdf->Cell(8,9,utf8_decode(''),1,0,'C',false);
+	$pdf->Cell(8,9,utf8_decode(''),1,0,'C',true);
 	
 	$pdf->Ln(9);
 	$pdf->SetX(102);
 	$pdf->MultiCell(25,4.5,utf8_decode('ESTADO DE EBRIEDAD'),1,'C',false);
 	$pdf->SetXY(127,192);
-	$pdf->Cell(8,9,utf8_decode(''),1,0,'C',false);
+	$pdf->Cell(8,9,utf8_decode(''),1,0,'C',true);
 	
 	$pdf->MultiCell(25,4.5,utf8_decode('BAJO EFECTO DE DROGAS'),1,'C',false);
 	$pdf->SetXY(160,192);
-	$pdf->Cell(8,9,utf8_decode(''),1,0,'C',false);
+	$pdf->Cell(8,9,utf8_decode(''),1,0,'C',true);
 
 	$pdf->SetFont('ARIAL','',7);
 	$pdf->MultiCell(29,4.5,utf8_decode('POR PRESCRIPCIÓN MEDICA'),1,'C',false);
 	$pdf->SetXY(197,192);
-	$pdf->Cell(8,9,utf8_decode(''),1,0,'C',false);
+	$pdf->Cell(8,9,utf8_decode(''),1,0,'C',true);
 
 	//seccion de las areas grandes
 	$pdf->Ln(15);
 	$pdf->SetFont('ARIAL','',9);
-	$pdf->Rect(10,208, 195, 60,'D');
+	$pdf->SetFillColor(206, 231, 239);
+	$pdf->Rect(10,208, 195, 60,'DF');
 	$pdf->Cell(0,9,utf8_decode('PADECIMIENTO ACTUAL'),'',0,'L',false);
 	$pdf->Ln(9);
 	$pdf->SetFont('ARIAL','',10);
@@ -235,7 +240,7 @@ $pdf = new PDF();
 
 	$pdf->MultiCell(194,4.5,utf8_decode($valor_f02['pad_actual']),'','J',false);
 	
-	$pdf->Rect(10,268, 195, 60,'D');
+	$pdf->Rect(10,268, 195, 60,'DF');
 		
 	$pdf->SetXY(10,267);
 	$pdf->SetFont('ARIAL','',9);
@@ -246,14 +251,14 @@ $pdf = new PDF();
 	$pdf->SetXY(10,326);
 	$pdf->SetFont('ARIAL','B',9);
 	$pdf->Cell(0,9,utf8_decode('ANVERSO'),0,0,'L',false);
-
+	$pdf->Image('images/imagee.png', 5, 50,200);
 
 	//segunda hoja
 	$pdf->AddPage("P","Legal");
 	$pdf->Ln(3);
 	$pdf->SetFont('ARIAL','',9);
 
-	$pdf->Rect(10,30, 195, 36,'D');
+	$pdf->Rect(10,30, 195, 36,'DF');
 	$pdf->SetXY(10,28);
 	$pdf->Cell(0,9,utf8_decode('LABORATORIO Y GABINETE'),0,0,'L',false);
 	$pdf->SetXY(10,35);
@@ -261,28 +266,29 @@ $pdf = new PDF();
 
 	
 	$pdf->SetFont('ARIAL','',9);
-	$pdf->Rect(10,66, 195, 36,'D');
+	$pdf->Rect(10,66, 195, 36,'DF');
 	$pdf->SetXY(10,64);
 	$pdf->Cell(0,9,utf8_decode('DIAGNÓSTICO NOSOLÓGICO'),0,0,'L',false);
 	$pdf->SetXY(10,72);
 	$pdf->MultiCell(194,4.5,utf8_decode($valor_f02['diag_nosologico']),0,'J',false);
 
 	$pdf->SetFont('ARIAL','',9);
-	$pdf->Rect(10,102, 195, 36,'D');
+	$pdf->Rect(10,102, 195, 36,'DF');
 	$pdf->SetXY(10,100);
 	$pdf->Cell(0,9,utf8_decode('DIAGNÓSTICO ETIOLÓGICO'),0,0,'L',false);
 	$pdf->SetXY(10,108);
 	$pdf->MultiCell(194,4.5,utf8_decode($valor_f02['diag_etiologico']),0,'J',false);
 
 	$pdf->SetFont('ARIAL','',9);
-	$pdf->Rect(10,138, 195, 36,'D');
+	$pdf->Rect(10,138, 195, 36,'DF');
 	$pdf->SetXY(10,136);
 	$pdf->Cell(0,9,utf8_decode('DIAGNÓSTICO ANATOMO FUNCIONAL'),0,0,'L',false);
 	$pdf->SetXY(10,144);
 	$pdf->MultiCell(194,4.5,utf8_decode($valor_f02['diag_anatomo']),0,'J',false);
 
 	$pdf->SetFont('ARIAL','',9);
-	$pdf->Rect(10,174, 195, 36,'D');
+	$pdf->SetFillColor(206, 231, 239);
+	$pdf->Rect(10,174, 195, 36,'DF');
 	$pdf->SetXY(10,172);
 	$pdf->Cell(0,9,utf8_decode('PRONÓSTICO'),0,0,'L',false);
 	$pdf->SetXY(10,179);
@@ -305,27 +311,30 @@ $pdf = new PDF();
 	$arre_div2 = $grlClass->divDate($valor_f02['fecha_fin_lic_med']);
 
 	$pdf->SetXY(130,219);
-	$pdf->Cell(10,8,utf8_decode($arre_div['dia']),1,0,'L',false);
-	$pdf->Cell(10,8,utf8_decode($arre_div['mes']),1,0,'L',false);
-	$pdf->Cell(10,8,utf8_decode($arre_div['anio']),1,0,'L',false);
+	$pdf->SetFillColor(206, 231, 239);
+	$pdf->Cell(10,8,utf8_decode($arre_div['dia']),1,0,'L',true);
+	$pdf->Cell(10,8,utf8_decode($arre_div['mes']),1,0,'L',true);
+	$pdf->Cell(10,8,utf8_decode($arre_div['anio']),1,0,'L',true);
 
 	$pdf->SetXY(170,215);
+	$pdf->SetFillColor(186, 190, 191);
 	$pdf->Cell(10,4,utf8_decode('DIA'),1,0,'L',true);
 	$pdf->Cell(10,4,utf8_decode('MES'),1,0,'L',true);
 	$pdf->Cell(10,4,utf8_decode('AÑO'),1,0,'L',true);
 	$pdf->SetXY(170,219);
-	$pdf->Cell(10,8,utf8_decode($arre_div2['dia']),1,0,'L',false);
-	$pdf->Cell(10,8,utf8_decode($arre_div2['mes']),1,0,'L',false);
-	$pdf->Cell(10,8,utf8_decode($arre_div2['anio']),1,0,'L',false);
+	$pdf->SetFillColor(206, 231, 239);
+	$pdf->Cell(10,8,utf8_decode($arre_div2['dia']),1,0,'L',true);
+	$pdf->Cell(10,8,utf8_decode($arre_div2['mes']),1,0,'L',true);
+	$pdf->Cell(10,8,utf8_decode($arre_div2['anio']),1,0,'L',true);
 
 	$pdf->SetXY(10,234);
 	$pdf->MultiCell(27,4.5,utf8_decode('NOMBRE DEL MÉDICO'),1,'L',false);
 	$pdf->SetXY(42,234);
-	$pdf->Cell(27,2,utf8_decode($valor_medic['apellido_pat']),0,1,'C',false);
+	$pdf->Cell(27,2,utf8_decode($valor_medic['apellido_pat']),0,1,'C',true);
 	$pdf->SetXY(97,234);
-	$pdf->Cell(27,2,utf8_decode($valor_medic['apellido_mat']),0,1,'C',false);
+	$pdf->Cell(27,2,utf8_decode($valor_medic['apellido_mat']),0,1,'C',true);
 	$pdf->SetXY(157,234);
-	$pdf->Cell(27,2,utf8_decode($valor_medic['nombre']),0,1,'C',false);
+	$pdf->Cell(27,2,utf8_decode($valor_medic['nombre']),0,1,'C',true);
 
 
 	$pdf->Rect(37,237.5, 170, 5.5,'D');
@@ -339,7 +348,7 @@ $pdf = new PDF();
 	$pdf->SetXY(10,250);
 	$pdf->MultiCell(27,5,utf8_decode('CEDULA PROFESIONAL'),1,'L',false);
 	$pdf->SetXY(37,250);
-	$pdf->Cell(50,9.9,utf8_decode($valor_medic['cedula']),1,1,'C',false);
+	$pdf->Cell(50,9.9,utf8_decode($valor_medic['cedula']),1,1,'C',true);
 	$pdf->SetXY(130,250);
 	$pdf->Cell(0,9.4,utf8_decode(''),'B',1,'C',false);
 	$pdf->SetXY(130,260);
@@ -364,7 +373,7 @@ $pdf = new PDF();
 	
 	$pdf->Ln(1);
 	$pdf->Cell(35,5,utf8_decode('REVERSO'),0,1,'L',false);
-
+	$pdf->Image('images/imagee.png', 5, 50,200);
 	
 
 	

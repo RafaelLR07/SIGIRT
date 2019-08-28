@@ -16,8 +16,8 @@
      echo "error";
   }
 
-  $id = $ced_var->circunsTest('1','1562087952JHVOaRWD');
-  echo $id;
+  //$id = $ced_var->circunsTest('1','1562087952JHVOaRWD');
+  //echo $id;
   
  ?>
 
@@ -120,7 +120,7 @@
                       <option value="vespertino">Vespertino</option>    
                       <option value="nocturno">Nocturno</option>    
                       <option value="mixto">Mixto</option>      
-                      <option value="jornada acumulada">Jornada Acumulada</option>      
+                      <option value="jornada_acumulada">Jornada Acumulada</option>      
                       </select>
               </div>
             </div>
@@ -149,10 +149,10 @@
                 <strong><h3>Información del accidente</h3></strong><hr>     
              </div>
              <div class="panel-body">
-
-               <div class="form-group" style="background: pink">
-                 <div style="background: red; margin-left: 98%; margin-top:0; margin-right: 0;"><button>?</button></div>
-                 <div class="dom" style="background: yellow">
+                <!--style="background: pink"-->
+               <div class="form-group" >
+                 <!-- <div style="background: red; margin-left: 98%; margin-top:0; margin-right: 0;"><button>?</button></div>-->
+                 <div class="dom">
                   <label for="">Fecha y hora del accidente o probable inicio de la enfermedad</label>
                   <div class="inputD">
                     <input type="datetime-local" class="form-control" id="fech_acc" name="fech_acc">
@@ -161,7 +161,7 @@
 
               </div>
                 <div class="form-group">
-                  <div style="background: red; margin-left: 98%; margin-top:0; margin-right: 0;"><button>?</button></div>
+                  
                       <div class="dom">
                   <label for="">Descripcion detallada del accidente de trabajo</label>
                    <div class="inputD">
@@ -171,7 +171,7 @@
                 </div>
 
                  <div class="form-group">
-                  <div style="background: red; margin-left: 98%; margin-top:0; margin-right: 0;"><button>?</button></div>
+                 
                   <div class="dom">
                   <label for="">Circunstancias en las kue ocurrio el accidente</label>
                   <div class="inputD">
@@ -201,7 +201,7 @@
              <div class="panel-body">
                
                <div class="form-group">
-                <div style="background: red; margin-left: 98%; margin-top:0; margin-right: 0;"><button>?</button></div>
+               
                  <div class="dom">
                   <label for="">Dependencia</label>
                    <div class="inputD">
@@ -212,7 +212,7 @@
 
 
                <div class="form-group">
-                <div style="background: red; margin-left: 98%; margin-top:0; margin-right: 0;"><button>?</button></div>
+              
                  <div class="dom">
                   <label for="">Numero de ramo</label>
                    <div class="inputD">
@@ -222,7 +222,7 @@
                </div>
               
                <div class="title">
-                <div style="background: red; margin-left: 98%; margin-top:0; margin-right: 0;"><button>?</button></div>
+               
                 <div class="dom">
                   <h4><strong>Nombre del representante legal de la dependencia</strong></h4><hr>
                 </div>
@@ -370,7 +370,7 @@
                  <div class="dom">
                   <label for="">Fecha y hora de comunicacion del riesgo de trabajo</label>
                    <div class="inputD">
-                    <input type="date" class="form-control" id="fech_riesgo" name="fech_riesgo">
+                    <input type="datetime-local" class="form-control" id="fech_riesgo" name="fech_riesgo">
                    </div>
                  </div>
                 </div>

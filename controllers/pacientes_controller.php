@@ -5,9 +5,24 @@
 	*/
 	class control_f02  {
 
-		public function updateF02(){
+
+
+		public function updateF02_admi_user($token_tram,$id){
+			if(isset($_POST['aprobar'])){
+				$respuesta=  datos_f02::upFrt02AdminUser($token_tram, $id, "ACTIVO","aprobar");			
+				return $respuesta;
+
+			}else if(isset($_POST['rechazar'])){
+				$respuesta=  datos_f02::upFrt02AdminUser($token_tram, $id, "RECHA","rechazar");
+				return $respuesta;
+
+			}
+		}
+
+
+		public function updateF02($token_tram, $id_pac){
 			
-			if(isset($_POST['ap_pater'])){
+			if(isset($_POST['medic_but'])){
 				
 				$datos_control = array(
 							'ap_pater' => $_POST['ap_pater'],
@@ -47,26 +62,17 @@
 							'fech_fin' => $_POST['fech_fin'],
 							'dias_lic' => $_POST['dias_lic'],
 							'medico' => $_POST['medico'],
-							'status' => 'PEND'
+							'status_t' => 'PEND' 
+							
 
 						);
 
-				//token de tramite
-				$token = $this->getToken();
-
-				//pacientes_grl saved
-				$respuesta = datos_f02::regist_pac_general($datos_control,"pacientes_grl"); 
-				//padecimientos x saved
-				$id_pac = datos_f02::getIdpac();
-				$respuesta = datos_f02::regis_checkx_model($id_pac,$padx,"padecimientos_x",$token); 
-
-				//se almacena el resto del RT-02
-				//get padx
-				$id_padX = datos_f02::getIdpadX();
-				
-				
-				
-				$respuesta = datos_f02::regis_rt_02('frt_02', $datos_f02, $id_pac, $id_padX,$token);  
+			
+				// echo var_dump($datos_control);
+				 //echo var_dump($padx);
+ 				 //echo var_dump($datos_f02);
+			
+				$respuesta = datos_f02::upFrt02($token_tram,$id_pac,$datos_control,$padx,$datos_f02);  
 				
 				return $respuesta;
 			}
@@ -119,7 +125,7 @@
 							<td>'.$valor['ape_pater'].'</td>
 							<td>'.$valor['ape_mater'].'</td>
 							<td>'.$valor['curp'].'</td>
-							<td>'.$var_del_ever.$var_editar.'</td>';
+							<td>'.$var_editar.'</td>';
 
 				include("../views/modules/Modals/down_pac.php");
 
@@ -169,7 +175,7 @@
 							<td>'.$valor['ape_pater'].'</td>
 							<td>'.$valor['ape_mater'].'</td>
 							<td>'.$valor['id_frt02'].'</td>
-							<td>'.$var_del_ever.$var_editar.'</td>';
+							<td>'.$var_editar.'</td>';
 
 				include("../views/modules/Modals/down_pac.php");
 
@@ -191,7 +197,7 @@
 					<th >NOMBRE</th>
 					<th >APELLIDO PATERNO</th>
 					<th >APELLIDO MATERNO</th>
-					<th>asdasd<th>
+					<th>asdasd</th>
 					<th >ACCIÓN</th>
 					
 				</tr>
@@ -211,7 +217,7 @@
 							<td>'.$valor['ape_pater'].'</td>
 							<td>'.$valor['ape_mater'].'</td>
 							<td>'.$valor['id_frt02'].'</td>
-							<td>'.$var_del_ever.$var_editar.'</td>';
+							<td>'.$var_editar.'</td>';
 
 				include("../views/modules/Modals/down_pac.php");
 

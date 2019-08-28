@@ -59,12 +59,14 @@ class log_model extends Connection
 	}
 	
 	public function logUser($table, $dat_log)
-	{
-		$kuery = "SELECT * FROM usuarios WHERE nombre = :usuario AND passwordU = :contra ";
+	{	
+		$estatus = "ACTIVO";
+		$kuery = "SELECT * FROM usuarios WHERE nombre = :usuario AND passwordU = :contra AND statuss = :estatuss";
 
 		$stmt = Connection::open()->prepare($kuery);
 		$stmt->bindParam(":usuario",$dat_log["usuario"], PDO::PARAM_STR);
 		$stmt->bindParam(":contra",$dat_log["contra"], PDO::PARAM_STR);
+		$stmt->bindParam(":estatuss",$estatus, PDO::PARAM_STR);
 	
 		if($stmt->execute()){
 			$datos = $stmt->fetch();	

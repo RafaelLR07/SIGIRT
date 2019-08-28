@@ -7,6 +7,7 @@
 	include_once "controllers/f01_controller.php";
 	include_once "controllers/f03_controller.php";
 	include_once "controllers/user_getInf_controller.php";
+	include_once "controllers/usuarios_controller.php";
 	
 	include_once "models/main_model.php";
 	include_once "models/f02_model.php";
@@ -14,6 +15,7 @@
 	include_once "models/f03_model.php";
 	include_once "models/cedula_model.php";
 	include_once "models/log_model.php";
+	include_once "models/usuarios_model.php";
 	//include_once "models/pac_pendientes_model.php";
 
 	$main_controller = new main_controller();

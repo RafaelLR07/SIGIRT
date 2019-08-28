@@ -15,13 +15,13 @@
             if($user=="Medico"){
               echo '<input class="form-control" type="text" id="but_med_pend" placeholder="buscar en" <br>';
 
-              echo '<input class="form-control" type="" id="us" value="'.$user.'">';
+              echo '<input class="form-control" type="hidden" id="us" value="'.$user.'">';
 
             
              
             }else{
               echo '<input class="form-control" type="text" id="but_pend" placeholder="hola">';            
-              echo '<input class="form-control" type="" id="us" value="0">';
+              echo '<input class="form-control" type="hidden" id="us" value="0">';
             }
 
          ?>

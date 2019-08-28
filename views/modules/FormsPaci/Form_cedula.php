@@ -2,8 +2,10 @@
   date_default_timezone_set('America/Mexico_City');
   $fecha_hoy = strftime("%Y-%m-%d");
   $id_pac = $_GET['pac'];
+  
 
   //buscar el token del f02 mayor
+  
 
   $ced_var = new cedula_controller();
   $token = $ced_var->getTokenF02($id_pac);
@@ -289,15 +291,10 @@
                     <div class="dom">
                       <label for="Materno" class="col-sm-4 col-form-label col-form-label-lg">Porcentaje</label>
                       <div class="col-sm-8">
-                        <div class="formulario">
-                        <input type="radio" value="si" name="porcentaje" id="porcentaje_si">
-                        <label class="labelx" for="porcentaje_si">SI</label>
-                        <input type="radio" value="no" name="porcentaje" id="porcentaje_no">
-                        <label class="labelx" for="porcentaje_no">NO</label>
-                        </div>
-
+                        
+                        <input type="text" class="form-control"  name="porcentaje" id="porcentaje_si">
                       </div>
-                      </div>
+                    </div>
                   </div>
 
 
@@ -340,7 +337,7 @@
 
 
                   <div class="btn-group col-sm-8 col-lg-offset-9">
-            	<input type="submit" name="regiss" class="btn btn-success" value="Registrar">
+            	<input type="submit" name="regiss" class="btn btn-success" value="Guardar avance">
            </div> 
          </div>                    
      

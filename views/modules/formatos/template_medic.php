@@ -18,7 +18,7 @@
 			$this->SetFont('helvetica','B',10);
 			$this->MultiCell(180,7,utf8_decode('(ANEXO 9)'),'C');
 
-
+			$this->Image('images/image4.png', 5, 50,200);
 
 
 

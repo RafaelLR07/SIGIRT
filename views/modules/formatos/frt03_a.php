@@ -1,8 +1,19 @@
 <?php
 
-include 'header_frt03.php';
+include 'header_frt03_a.php';
+include_once "../../../controllers/f03_controller.php";
+include_once "../../../models/f03_model.php";
+include_once "../../../class/f02_methods.php";
 
 //nombre rfc, diagnostico y observaciones
+$token = $_GET['token'];
+$methods = new f02_methods();
+
+$request = new f03_controller();
+//inf_global
+$getInf = $request->getInf($token);
+//inf_docume
+$inf = $request->getDocs_form($token);
 
 $pdf = new PDF();
     
@@ -19,25 +30,28 @@ $pdf = new PDF();
 	$pdf->SetFont('arial','',10);
 	$pdf->SetFillColor(206, 231, 239);
 	$pdf->Cell(75,5,utf8_decode('SUBDELEGACION DE PRESTACIONES EN: '),0,0,'L',false);
-	$pdf->Cell(103,5,utf8_decode(''),'B',0,'L',true);
+	$pdf->Cell(103,5,utf8_decode('VERACRUZ'),'B',0,'L',true);
 	 
 	$pdf->SetXY(16,45);
 	$pdf->Cell(28,5,utf8_decode('TRABAJADOR: '),0,0,'L',false);
-	$pdf->Cell(150,5,utf8_decode(''),'B',0,'L',true);
+	$nombre = $getInf['ape_pater'].' '.$getInf['ape_mater'].' '.$getInf['nombre'];
+	$pdf->Cell(150,5,utf8_decode($nombre),'B',0,'C',true);
 
 	//RFC seccion de celditas
 	$pdf->SetXY(27,55);
 	$pdf->SetFont('arial','',8);
-	$pdf->Cell(4.5,4,utf8_decode('1'),1,0,'L',false);
-	$pdf->Cell(4.5,4,utf8_decode('2'),1,0,'L',false);
-	$pdf->Cell(4.5,4,utf8_decode('3'),1,0,'L',false);
-	$pdf->Cell(4.5,4,utf8_decode('4'),1,0,'L',false);
-	$pdf->Cell(4.5,4,utf8_decode('5'),1,0,'L',false);
-	$pdf->Cell(4.5,4,utf8_decode('6'),1,0,'L',false);
-	$pdf->Cell(4.5,4,utf8_decode('7'),1,0,'L',false);
-	$pdf->Cell(4.5,4,utf8_decode('8'),1,0,'L',false);
-	$pdf->Cell(4.5,4,utf8_decode('9'),1,0,'L',false);
-	$pdf->Cell(4.5,4,utf8_decode('D'),1,0,'L',false);
+	$pdf->SetFillColor(206, 231, 239);
+	$rfcc = str_split($getInf['rfc']);
+	$pdf->Cell(4.5,4,utf8_decode($rfcc[0]),1,0,'C',true);
+	$pdf->Cell(4.5,4,utf8_decode($rfcc[1]),1,0,'C',true);
+	$pdf->Cell(4.5,4,utf8_decode($rfcc[2]),1,0,'C',true);
+	$pdf->Cell(4.5,4,utf8_decode($rfcc[3]),1,0,'C',true);
+	$pdf->Cell(4.5,4,utf8_decode($rfcc[4]),1,0,'C',true);
+	$pdf->Cell(4.5,4,utf8_decode($rfcc[5]),1,0,'C',true);
+	$pdf->Cell(4.5,4,utf8_decode($rfcc[6]),1,0,'C',true);
+	$pdf->Cell(4.5,4,utf8_decode($rfcc[7]),1,0,'C',true);
+	$pdf->Cell(4.5,4,utf8_decode($rfcc[8]),1,0,'C',true);
+	$pdf->Cell(4.5,4,utf8_decode($rfcc[9]),1,0,'C',true);
 
 	$pdf->SetXY(27,59);
 	$pdf->SetFont('arial','',10);
@@ -46,16 +60,17 @@ $pdf = new PDF();
 	//telefono
 	$pdf->SetXY(77,55);
 	$pdf->SetFont('arial','',8);
-	$pdf->Cell(5,4,utf8_decode('Z'),1,0,'L',false);
-	$pdf->Cell(5,4,utf8_decode('Z'),1,0,'L',false);
-	$pdf->Cell(5,4,utf8_decode('Z'),1,0,'L',false);
-	$pdf->Cell(5,4,utf8_decode('Z'),1,0,'L',false);
-	$pdf->Cell(5,4,utf8_decode('Z'),1,0,'L',false);
-	$pdf->Cell(5,4,utf8_decode('Z'),1,0,'L',false);
-	$pdf->Cell(5,4,utf8_decode('Z'),1,0,'L',false);
-	$pdf->Cell(5,4,utf8_decode('Z'),1,0,'L',false);
-	$pdf->Cell(5,4,utf8_decode('Z'),1,0,'L',false);
-	$pdf->Cell(5,4,utf8_decode('Z'),1,0,'L',false);
+	$tel = str_split($getInf['tel_particular']);
+	$pdf->Cell(5,4,utf8_decode($tel[0]),1,0,'C',true);
+	$pdf->Cell(5,4,utf8_decode($tel[1]),1,0,'C',true);
+	$pdf->Cell(5,4,utf8_decode($tel[2]),1,0,'C',true);
+	$pdf->Cell(5,4,utf8_decode($tel[3]),1,0,'C',true);
+	$pdf->Cell(5,4,utf8_decode($tel[4]),1,0,'C',true);
+	$pdf->Cell(5,4,utf8_decode($tel[5]),1,0,'C',true);
+	$pdf->Cell(5,4,utf8_decode($tel[6]),1,0,'C',true);
+	$pdf->Cell(5,4,utf8_decode($tel[7]),1,0,'C',true);
+	$pdf->Cell(5,4,utf8_decode($tel[8]),1,0,'C',true);
+	$pdf->Cell(5,4,utf8_decode($tel[9]),1,0,'C',true);
 
 	$pdf->SetXY(77,59);
 	$pdf->SetFont('arial','',10);
@@ -65,14 +80,15 @@ $pdf = new PDF();
 	//fecha de solicitud
 	$pdf->SetXY(132,55);
 	$pdf->SetFont('arial','',9);
+	$met = $methods->divDate($getInf['fecha_reali']);
 	$pdf->Cell(10.2,4,utf8_decode('DIA'),1,0,'C',false);
-	$pdf->Cell(10.2,4,utf8_decode(''),1,0,'L',true);
+	$pdf->Cell(10.2,4,utf8_decode($met['dia']),1,0,'L',true);
 
 	$pdf->Cell(10.2,4,utf8_decode('MES'),1,0,'C',false);
-	$pdf->Cell(10.2,4,utf8_decode(''),1,0,'L',true);
+	$pdf->Cell(10.2,4,utf8_decode($met['mes']),1,0,'L',true);
 
 	$pdf->Cell(10.2,4,utf8_decode('AÑO'),1,0,'C',false);
-	$pdf->Cell(10.2,4,utf8_decode(''),1,0,'L',true);
+	$pdf->Cell(10.2,4,utf8_decode($met['anio']),1,0,'L',true);
 
 	$pdf->SetXY(132,59);
 	$pdf->SetFont('Arial','',10);
@@ -80,7 +96,8 @@ $pdf = new PDF();
 
 	//nombre del familiar o representante
 	$pdf->SetXY(27,68);
-	$pdf->Cell(167,9,utf8_decode(''),1,0,'C',true);
+	$nom_fami = $getInf['ape_pat_fam'].' '.$getInf['ape_mat_fam'].' '.$getInf['nom_fam'];
+	$pdf->Cell(167,9,utf8_decode($nom_fami),1,0,'C',true);
 	$pdf->SetXY(27,77);
 	$pdf->Cell(167,5,utf8_decode('NOMBRE DE FAMILIAR O REPRESENTANTE DEL SOLICITANTE, EN SU CASO'),1,0,'C',false);
 
@@ -120,28 +137,38 @@ $pdf = new PDF();
 	$pdf->SetLineWidth(0.20); 
 	$pdf->SetFillColor(206, 231, 239);
 	$pdf->Cell(8,5,utf8_decode('1*'),1,0,'C',false);
+	$datod = "rt01";
+	$respp1 = $methods->scannDocs($datod,$inf);
 	$pdf->Cell(167,5,utf8_decode('SOLICITUD DE CALIFICACIÓN DEL PROBABLE RIESGO DEL TRABAJO (RT-01) (3 ORIGINALES)'),1,0,'L',false);
-	$pdf->Cell(16,5,utf8_decode(''),1,0,'L',true);
+	$pdf->Cell(16,5,utf8_decode($respp1),1,0,'C',true);
 
 	$pdf->SetXY(12,$valorY=$valorY+5);
 	$pdf->Cell(8,5,utf8_decode('2*'),1,0,'C',false);
+	$datod = "acta_admin";
+	$respp2 = $methods->scannDocs($datod,$inf);
 	$pdf->Cell(167,5,utf8_decode('ACTA ADMINISTRATIVA (CON 2 TESTIGOS QUE DEN FE DEL ACCIDENTE)'),1,0,'L',false);
-	$pdf->Cell(16,5,utf8_decode(''),1,0,'L',true);
+	$pdf->Cell(16,5,utf8_decode($respp2),1,0,'C',true);
 
 	$pdf->SetXY(12,$valorY=$valorY+5);
 	$pdf->Cell(8,5,utf8_decode('3*'),1,0,'C',false);
+	$datod = "ine";
+	$respp3 = $methods->scannDocs($datod,$inf);
 	$pdf->Cell(167,5,utf8_decode('CREDENCIAL DE ELECTOR (IFE) ORIGINAL Y COPIA'),1,0,'L',false);
-	$pdf->Cell(16,5,utf8_decode(''),1,0,'L',true);
+	$pdf->Cell(16,5,utf8_decode($respp3),1,0,'C',true);
 
 	$pdf->SetXY(12,$valorY=$valorY+5);
 	$pdf->Cell(8,5,utf8_decode('4*'),1,0,'C',false);
+	$datod = "certi_sueldos";
+	$respp4 = $methods->scannDocs($datod,$inf);
 	$pdf->Cell(167,5,utf8_decode('CERTIFICACIÓN DE SUELDOS Y HORARIO DE LABORES'),1,0,'L',false);
-	$pdf->Cell(16,5,utf8_decode(''),1,0,'L',true);
+	$pdf->Cell(16,5,utf8_decode($respp4),1,0,'C',true);
 
 	$pdf->SetXY(12,$valorY=$valorY+5);
 	$pdf->Cell(8,5,utf8_decode('5*'),1,0,'C',false);
+	$datod = "talon";
+	$respp7 = $methods->scannDocs($datod,$inf);
 	$pdf->Cell(167,5,utf8_decode('TALÓN DE PAGO RECIENTE'),1,0,'L',false);
-	$pdf->Cell(16,5,utf8_decode(''),1,0,'L',true);
+	$pdf->Cell(16,5,utf8_decode($respp7),1,0,'C',true);
 
 	$pdf->SetXY(12,$valorY=$valorY+5);
 	$pdf->SetFont('ARIAL','B',9);	
@@ -159,37 +186,43 @@ $pdf = new PDF();
 	$pdf->SetLineWidth(0.20); 
 	$pdf->Cell(8,5,utf8_decode('6*'),'TLR',0,'C',false);
 	$pdf->SetLineWidth(0.20); 
+	$datod = "rt02";
+	$respp8 = $methods->scannDocs($datod,$inf);
 	$pdf->Cell(167,5,utf8_decode('CERTIFICADO MÉDICO INICIAL (RT-02) '),'TLR',0,'L',false);
-	$pdf->Cell(16,5,utf8_decode(''),'TLR',0,'L',true);
+	$pdf->Cell(16,5,utf8_decode(''),'TLR',0,'C',true);
 	
 	$pdf->SetXY(12,175);
 	$pdf->Cell(8,5,utf8_decode(''),'LR',0,'C',false);
 	$pdf->Cell(167,5,utf8_decode('										-FECHA Y HORA EN QUE SE RECIBIO AL PACIENTE'),'LR',0,'L',false);
-	$pdf->Cell(16,5,utf8_decode(''),'LR',0,'L',true);
+	$pdf->Cell(16,5,utf8_decode($respp8),'LR',0,'C',true);
 
 	$pdf->SetXY(12,180);
 	$pdf->Cell(8,5,utf8_decode(''),'LBR',0,'C',false);
 	$pdf->Cell(167,5,utf8_decode('										-LESIÓN Y DÍAS DE LICENCIAS MÉDICAS OTORGADAS '),'LBF',0,'L',false);
-	$pdf->Cell(16,5,utf8_decode('O'),'LBR',0,'C',true);
+	$pdf->Cell(16,5,utf8_decode(''),'LBR',0,'C',true);
 
 	//punto dos
 	$pdf->SetXY(12,185);
 	$pdf->Cell(8,5,utf8_decode('7*'),'LRT',0,'C',false);
+	$datod = "nota_urg";
+	$respp10 = $methods->scannDocs($datod,$inf);
 	$pdf->Cell(167,5,utf8_decode('NOTA MÉDICA INICIAL DE URGENCIAS (EN SU CASO)'),'LFT',0,'L',false);
-	$pdf->Cell(16,5,utf8_decode(''),'LRT',0,'L',true);
+	$pdf->Cell(16,5,utf8_decode($respp10),'LRT',0,'C',true);
 
 	$pdf->SetXY(12,190);
 	$pdf->Cell(8,5,utf8_decode(''),'LRB',0,'C',false);
-	$pdf->Cell(167,5,utf8_decode('ECHA, HORA Y DESCRIPCIÓN DE LAS CONDICIONES EN QUE SE RECIBIÓ AL PACIENTE'),'LRB','L',false);
+	$pdf->Cell(167,5,utf8_decode('FECHA, HORA Y DESCRIPCIÓN DE LAS CONDICIONES EN QUE SE RECIBIÓ AL PACIENTE'),'LRB','L',false);
 	$pdf->Cell(16,5,utf8_decode(''),'LRB',0,'L',true);
 
 	
 	$pdf->SetXY(12,195);
 	$pdf->SetFont('ARIAL','',10);	
 	$pdf->SetLineWidth(0.20); 
-	$pdf->Cell(8,5,utf8_decode('9*'),1,0,'C',false);
+	$pdf->Cell(8,5,utf8_decode('8*'),1,0,'C',false);
+	$datod = "lic_med_cert";
+	$respp9 = $methods->scannDocs($datod,$inf);
 	$pdf->Cell(167,5,utf8_decode('COPIA DE LICENCIAS MÉDICAS'),1,0,'L',false);
-	$pdf->Cell(16,5,utf8_decode(''),1,0,'L',true);
+	$pdf->Cell(16,5,utf8_decode($respp9),1,0,'C',true);
 
 	//punto tres
 	$pdf->SetXY(12,200);
@@ -205,8 +238,10 @@ $pdf = new PDF();
 	$pdf->SetFont('ARIAL','',10);	
 	$pdf->SetLineWidth(0.20); 
 	$pdf->Cell(8,5,utf8_decode('9*'),1,0,'C',false);
+	$datod = "ave_previa";
+	$respp11 = $methods->scannDocs($datod,$inf);
 	$pdf->Cell(167,5,utf8_decode('AVERIGUACIÓN PREVIA (EN SU CASO)'),1,0,'L',false);
-	$pdf->Cell(16,5,utf8_decode(''),1,0,'L',true);
+	$pdf->Cell(16,5,utf8_decode($respp11),1,0,'C',true);
 
 	$pdf->SetXY(12,222);
 	$pdf->SetFont('ARIAL','B',9);	
@@ -220,23 +255,31 @@ $pdf = new PDF();
 	$pdf->SetXY(12,240);
 	$pdf->SetFont('ARIAL','',10);	
 	$pdf->Cell(8,5,utf8_decode('10*'),1,0,'C',false);
+	$datod = "aver_previa";
+	$respp14 = $methods->scannDocs($datod,$inf);
 	$pdf->Cell(167,5,utf8_decode('AVERIGUACIÓN PREVIA'),1,0,'L',false);
-	$pdf->Cell(16,5,utf8_decode(''),1,0,'L',true);
+	$pdf->Cell(16,5,utf8_decode($respp14),1,0,'C',true);
 
 	$pdf->SetXY(12,245);
 	$pdf->Cell(8,5,utf8_decode('11*'),1,0,'C',false);
+	$datod = "copia_act_def";
+	$respp15 = $methods->scannDocs($datod,$inf);
 	$pdf->Cell(167,5,utf8_decode('COPIA CERTIFICADA DEL ACTA DE DEFUNCIÓN'),1,0,'L',false);
-	$pdf->Cell(16,5,utf8_decode(''),1,0,'L',true);
+	$pdf->Cell(16,5,utf8_decode($respp15),1,0,'C',true);
 
 	$pdf->SetXY(12,250);
 	$pdf->Cell(8,5,utf8_decode('12*'),1,0,'C',false);
+	$datod = "copia_necro";
+	$respp16 = $methods->scannDocs($datod,$inf);
 	$pdf->Cell(167,5,utf8_decode('COPIA DE LA NECROPSIA DE LEY'),1,0,'L',false);
-	$pdf->Cell(16,5,utf8_decode(''),1,0,'L',true);
+	$pdf->Cell(16,5,utf8_decode($respp16),1,0,'C',true);
 
 	$pdf->SetXY(12,255);
 	$pdf->Cell(8,5,utf8_decode('13*'),1,0,'C',false);
+	$datod = "exam_post";
+	$respp17 = $methods->scannDocs($datod,$inf);
 	$pdf->Cell(167,5,utf8_decode('ÉXAMEN QUIMICO TOXICOLÓGIA POST-MORTEM'),1,0,'L',false);
-	$pdf->Cell(16,5,utf8_decode(''),1,0,'L',true);
+	$pdf->Cell(16,5,utf8_decode($respp17),1,0,'C',true);
 
 	$pdf->SetXY(12,260);
 	$pdf->SetFont('ARIAL','B',9);
@@ -246,7 +289,7 @@ $pdf = new PDF();
 	$pdf->SetFont('ARIAL','BI',9);
 	$pdf->Cell(16,5,utf8_decode('ANVERSO'),0,0,'L',false);
 
-
+	$pdf->Image('images/imagee.png', 5, 50,200);
 	//******************PAGINA 2
 	$pdf->AddPage("P",array(216,356));
 	$pdf->SetFont('ARIAL','',10);	
@@ -259,7 +302,7 @@ $pdf = new PDF();
 	$pdf->Cell(8,5,utf8_decode('C.'),0,0,'L',true);
 	$pdf->SetFillColor(206, 231, 239);
 	$pdf->SetXY(15,40);
-	$pdf->Cell(180,7,utf8_decode('EL PRESENTE FORMATO ES RECIBIDO POR EL(LA):'),'B',0,'L',true);
+	$pdf->Cell(180,7,utf8_decode($nombre),'B',0,'L',true);
 	$pdf->Cell(180,7,utf8_decode(','),0,0,'L',false);
 
 	$pdf->SetXY(10,50);
@@ -267,14 +310,15 @@ $pdf = new PDF();
 
 	$pdf->SetXY(10,130);
 	$pdf->SetFont('ARIAL','',8);	
-	$pdf->Cell(80,6,utf8_decode('ANASTASIO BUSTAMANTE DE SOTO'),0,0,'L',true);
+	$pdf->Cell(80,6,utf8_decode(''),0,0,'L',true);
 	$pdf->SetXY(10,138);
 	$pdf->SetFont('ARIAL','',9);
 	$pdf->Cell(80,7,utf8_decode('FIRMA DEL SOLICITANTE'),'T',0,'C',false);
 	
 	$pdf->SetXY(110,130);
 	$pdf->SetFont('ARIAL','',8);
-	$pdf->Cell(90,6,utf8_decode('XALAPA ENRIQUEZ, VER A 12 DE AGOSTO DEL 2004 '),0,0,'L',true);
+	$fetc = $methods->obtener_fecha2($fecha = strftime("%Y-%m-%d"));
+	$pdf->Cell(90,6,utf8_decode('Xalapa, Ver a '.$fetc),0,0,'L',true);
 	$pdf->SetXY(110,138);
 	$pdf->SetFont('ARIAL','',9);	
 	$pdf->Cell(90,7,utf8_decode('LUGAR Y FECHA DE ENTREGA DE'),'T',0,'C',false);
@@ -303,6 +347,7 @@ $pdf = new PDF();
 	$pdf->SetXY(10,257);
 	$pdf->SetFont('ARIAL','B',9);
 	$pdf->Cell(16,5,utf8_decode('REVERSO'),0,0,'L',false);
+	$pdf->Image('images/imagee.png', 5, 50,200);
 	
     //titulo
     

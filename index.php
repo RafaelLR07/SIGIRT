@@ -64,7 +64,7 @@ if ($valor=="error") {
 
         <input type="submit" class="btn-block" name="log" id="ingresar_log" value="Ingresar">
       </form>
-      <a href="content.php?p=content"> entrar</a>
+     
     </div>	
 	</body>
    	<!-- Pie de pagina del sistema PRAXAIR-->

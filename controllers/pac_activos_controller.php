@@ -4,17 +4,46 @@
 	* 
 	*/
 	class Pacientes_activos
-	{	//posible funcion de busqueda
-		/*
-		function SearchpacAct_controller($paci){
-			if($paci==""){
-				echo "no se encontro";
+	{	
+		public function f03_exist($token)
+		{
+			$respuesta =  datos_f02::f03Exist($token);
+			if($respuesta>0){
+				return true;
 			}else{
+				return false;
+			}	
+		}
 
-				echo "buscando".$paci;
+		public function f01Exist($token)
+		{	
+			
+			$respuesta =  datos_f02::f01Exist($token);
+			if($respuesta>0){
+				return true;
+			}else{
+				return false;
 			}
-		}*/
+		}
 
+		public function cedExist($token)
+		{	
+			
+			$respuesta =  datos_f02::cedExist($token);
+			if($respuesta>0){
+				return true;
+			}else{
+				return false;
+			}
+		}
+
+		public function getToken_dash($id_pac_grl)
+		{
+			$respuesta=  datos_f02::getToken_dash($id_pac_grl);
+			foreach ($respuesta as $key);
+			return $key;
+
+		}
 
 
 		function pacAct_controller(){

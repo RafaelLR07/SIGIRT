@@ -7,10 +7,10 @@
 		{
 			
 			$this->SetLineWidth(1.2); 
-    		$this->SetFillColor(206, 231, 239);    
+    		$this->SetFillColor(226, 222, 222);    
 			$this->Rect(12,5,256,204,'DF');
 			
-			//$this->Image('images/logo issste 2019.jpg', 5, 250,200);
+			$this->Image('images/logo issste 2019.jpg', 5, 250,200);
 			
 		}
 		

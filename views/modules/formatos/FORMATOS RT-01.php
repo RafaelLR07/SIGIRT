@@ -746,6 +746,7 @@
     /*-----------------------------------------> FIN   */
 
     /*-----------------------------------------> HOJA 2*/
+    $pdf->Image('images/imagee.png', 5, 50,200);
     $pdf->AddPage("P",array(216,356));
     $pdf->SetFont('Arial','',7);
     $pdf->text(110,28,utf8_decode('PARA USO DEL MEDICO DE MEDICINA DEL TRABAJO'),0,1,'C',false);
@@ -1191,7 +1192,7 @@
 
     $pdf->SetFont('arial','',7);
     $pdf->text(40,290,utf8_decode('"ESTE DOCUMENTO CARECE DE VALIDEZ SI PRESENTA TACHADURAS O ENMENDADURAS"'),0,1,'C',false);
-
+    $pdf->Image('images/imagee.png', 5, 50,200);
 
 
 

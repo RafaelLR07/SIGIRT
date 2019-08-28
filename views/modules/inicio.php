@@ -57,7 +57,7 @@
       <div class="item">
         <img src="views/includes/img_index/6ePz8FN.jpg" alt="Flower" width="460" height="345">
         <div class="carousel-caption">
-          <h3>Mision y vision</h3>
+          <h3>Mision y vision 1</h3>
           <p>Comprometidos con la salud de nuestros pacientes</p>
         </div>
       </div>
